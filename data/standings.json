@@ -1,11 +1,12 @@
 {
-  "updated": "2026-06-12T16:02:10-05:00",
+  "updated": "2026-06-12T16:18:34-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
-    "pollapato": "ok"
+    "pollapato": "ok",
+    "resultados": "ok (0 aplicados)"
   },
   "pollas": {
     "pollapato": {
@@ -26,17 +27,17 @@
     },
     "triplea": {
       "myPoints": 4,
-      "myRank": 93,
-      "leaderPoints": 6,
-      "leaderName": "MARMAT4 - CG3",
+      "myRank": 214,
+      "leaderPoints": 9,
+      "leaderName": "globaljak",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
       "myPoints": 1,
-      "myRank": 1040,
-      "leaderPoints": 6,
-      "leaderName": "MARMAT4 - CG3",
+      "myRank": 1191,
+      "leaderPoints": 9,
+      "leaderName": "globaljak",
       "participants": 1666,
       "ok": true
     },

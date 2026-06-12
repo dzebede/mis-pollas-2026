@@ -22,7 +22,12 @@ from datetime import datetime, timezone, timedelta
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "data", "standings.json")
+MATCHES_JSON = os.path.join(ROOT, "data", "matches.json")
 PANAMA = timezone(timedelta(hours=-5))
+
+# nombres que difieren entre Kicktipp y el Excel
+KICK_ALIAS = {"EE.UU.": "Estados Unidos", "Curaçao": "Curazao", "DR Congo": "RD del Congo"}
+def _norm(name): n = name.strip(); return KICK_ALIAS.get(n, n)
 
 def log(*a): print("[scrape]", *a, file=sys.stderr)
 
@@ -60,6 +65,36 @@ def scrape_kicktipp():
     return {"kicktipp": {"myPoints": me["pts"], "myRank": me["pos"],
                           "leaderPoints": leader["pts"], "leaderName": leader["name"],
                           "participants": None, "ok": True}}
+
+# ----------------------------------------------------------------------------
+# 1b) RESULTADOS REALES (Kicktipp tippuebersicht, público) -> data/matches.json
+# ----------------------------------------------------------------------------
+def scrape_results():
+    base = "https://www.kicktipp.es/mundial-masters-birriosos-2026/tippuebersicht"
+    op, _ = ua_opener()
+    results, seen = {}, set()
+    for idx in range(1, 19):
+        h = op.open(base + f"?spieltagIndex={idx}", timeout=30).read().decode("utf-8", "ignore")
+        rows = re.findall(r'<tr class="clickable"[^>]*>(.*?)</tr>', h, re.S)
+        if not rows: break
+        for r in rows:
+            tds = re.findall(r'<td[^>]*>(.*?)</td>', r, re.S)
+            if len(tds) < 5: continue
+            local = _norm(strip_html(tds[1])); visit = _norm(strip_html(tds[2]))
+            if (local, visit) in seen: continue
+            seen.add((local, visit))
+            m = re.search(r'(\d+)\s*:\s*(\d+)', strip_html(tds[4]))
+            if m: results[(local.lower(), visit.lower())] = [int(m.group(1)), int(m.group(2))]
+    if not results:
+        raise RuntimeError("resultados: Kicktipp no devolvió ninguno")
+    data = json.load(open(MATCHES_JSON, encoding="utf-8"))
+    applied = 0
+    for mt in data["matches"]:
+        res = results.get((mt["home"].lower(), mt["away"].lower()))
+        if res is not None and mt.get("result") != res:
+            mt["result"] = res; applied += 1
+    json.dump(data, open(MATCHES_JSON, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    return applied
 
 # ----------------------------------------------------------------------------
 # 2) POLLA26 (Laravel, login por cookies)
@@ -243,6 +278,15 @@ def main():
             status[label] = f"FALLO: {e}"
             if label in result: result[label].setdefault("ok", False)
             log(label, "FALLO:", e)
+
+    # resultados reales de los partidos (actualiza data/matches.json)
+    try:
+        n = scrape_results()
+        status["resultados"] = f"ok ({n} aplicados)"
+        log("resultados OK:", n, "aplicados")
+    except Exception as e:
+        status["resultados"] = f"FALLO: {e}"
+        log("resultados FALLO:", e)
 
     out = {"updated": datetime.now(PANAMA).isoformat(timespec="seconds"),
            "source": "scraper", "status": status, "pollas": result}

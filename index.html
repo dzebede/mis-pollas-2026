@@ -26,7 +26,7 @@
   .upd{font-size:11px;color:var(--mut);text-align:right;line-height:1.3}
   .seg{display:flex;gap:6px;margin:12px 0 10px}
   .seg button{flex:1;background:var(--card);color:var(--mut);border:1px solid var(--line);
-    padding:9px;border-radius:11px;font-size:14px;font-weight:700}
+    padding:9px 4px;border-radius:11px;font-size:13px;font-weight:700;white-space:nowrap}
   .seg button.on{background:var(--accent);color:#1a1300;border-color:var(--accent)}
   main{padding:14px;max-width:560px;margin:0 auto}
   /* ---- standings ---- */
@@ -88,6 +88,25 @@
   .note{font-size:11.5px;color:var(--mut);text-align:center;line-height:1.5;margin-top:6px}
   .daysum{font-size:11.5px;color:var(--mut);text-align:center;margin:-4px 0 12px}
   .daysum b{color:var(--accent)}
+  /* ---- tabla completa ---- */
+  .tlegend{font-size:11.5px;color:var(--mut);text-align:center;margin-bottom:10px;line-height:1.5}
+  .twrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:14px}
+  .ptab{border-collapse:collapse;width:100%;font-size:12px}
+  .ptab th,.ptab td{padding:7px 6px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}
+  .ptab thead th{position:sticky;top:0;background:var(--card2);font-size:10.5px;z-index:2;line-height:1.3}
+  .ptab thead th .fl2{font-size:15px}
+  .ptab .mcol{position:sticky;left:0;background:var(--card);text-align:left;min-width:148px;z-index:1}
+  .ptab thead .mcol{z-index:3;background:var(--card2)}
+  .ptab tbody tr:nth-child(even) .mcol{background:#141d3a}
+  .ptab tbody tr:nth-child(even){background:#0f1730}
+  .mc-d{font-size:9.5px;color:var(--mut)}
+  .mc-t{font-size:11.5px;font-weight:600;white-space:normal}
+  .mc-t b{color:var(--accent)}
+  .sc2{font-weight:700;color:var(--txt);min-width:38px}
+  .sc2.exact{background:var(--green);color:#062513}
+  .sc2.diff{background:var(--blue);color:#04243a}
+  .sc2.tend{background:var(--yellow);color:#3a2c00}
+  .sc2.miss{color:var(--mut)}
 </style>
 </head>
 <body>
@@ -99,11 +118,13 @@
   <div class="seg">
     <button id="segPart" class="on" onclick="setView('part')">⚽ Partidos</button>
     <button id="segPos" onclick="setView('pos')">🏆 Posiciones</button>
+    <button id="segTabla" onclick="setView('tabla')">📋 Tabla</button>
   </div>
 </header>
 <main>
   <div id="viewPart"></div>
   <div id="viewPos" style="display:none"></div>
+  <div id="viewTabla" style="display:none"></div>
 </main>
 
 <script>
@@ -153,15 +174,15 @@ async function load(){
   if(curDay<0){ curDay = days.findIndex(d=>d>=TODAY); if(curDay<0) curDay=days.length-1; }
   const u=new Date(STAND.updated);
   document.getElementById('upd').innerHTML='actualizado<br>'+u.toLocaleString('es',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
-  renderPos(); renderPart();
+  renderPos(); renderPart(); renderTabla();
 }
 
 function setView(v){
   view=v;
-  document.getElementById('viewPart').style.display = v==='part'?'block':'none';
-  document.getElementById('viewPos').style.display  = v==='pos' ?'block':'none';
-  document.getElementById('segPart').className = v==='part'?'on':'';
-  document.getElementById('segPos').className  = v==='pos' ?'on':'';
+  for(const [name,id] of [['part','Part'],['pos','Pos'],['tabla','Tabla']]){
+    document.getElementById('view'+id).style.display = v===name?'block':'none';
+    document.getElementById('seg'+id).className = v===name?'on':'';
+  }
 }
 
 function renderPos(){
@@ -247,6 +268,30 @@ function renderPart(){
   document.getElementById('viewPart').innerHTML=nav+sum+body+legend+note;
 }
 function chgDay(d){ curDay=Math.max(0,Math.min(days.length-1,curDay+d)); renderPart(); }
+
+function renderTabla(){
+  const P=CONFIG.pollas;
+  const head='<tr><th class="mcol">Partido</th>'+
+    P.map(p=>`<th style="color:${p.color}"><span class="fl2">${p.flag}</span><br>${p.col}</th>`).join('')+'</tr>';
+  let body='';
+  MATCHES.matches.forEach(m=>{
+    const res=m.result?`${m.result[0]}-${m.result[1]}`:'';
+    let cells='';
+    P.forEach(p=>{
+      const pr=m.predictions[p.id];
+      const r=scorePred(p.id,pr,m.result);
+      const lvl=(m.result&&r)?r.lvl:'';
+      cells+=`<td class="sc2 ${lvl}">${pr?pr[0]+'-'+pr[1]:'–'}</td>`;
+    });
+    body+=`<tr>
+      <td class="mcol"><div class="mc-d">${prettyDay(m.date)} · ${m.time} · ${m.group}</div>
+        <div class="mc-t">${m.home} <b>${res||'vs'}</b> ${m.away}</div></td>
+      ${cells}</tr>`;
+  });
+  document.getElementById('viewTabla').innerHTML=
+    `<div class="tlegend">Tus pronósticos en las 5 pollas (72 partidos) · el color = puntos ganados ese partido · ⬅️➡️ desliza</div>
+     <div class="twrap"><table class="ptab"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
+}
 
 load().catch(e=>{document.querySelector('main').innerHTML='<div class="empty">Error cargando datos.<br>'+e+'</div>';});
 if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').catch(()=>{}); }

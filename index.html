@@ -31,7 +31,17 @@
   main{padding:14px;max-width:1120px;margin:0 auto}
   .sec{font-size:16px;font-weight:800;margin:20px 4px 11px;letter-spacing:.2px}
   .sec:first-child{margin-top:4px}
-  .posgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+  .posgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+  .pmini{display:block;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);
+    border-radius:12px;padding:9px 4px 8px;text-align:center;text-decoration:none;color:var(--txt);min-width:0}
+  .pm-h{display:flex;flex-direction:column;align-items:center;gap:1px;margin-bottom:4px}
+  .pm-fl{font-size:18px;line-height:1}
+  .pm-nm{font-size:10px;font-weight:700;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  .pm-pts{font-size:23px;font-weight:800;color:var(--accent);line-height:1}
+  .pm-pts span{font-size:9px;color:var(--mut);font-weight:600;margin-left:1px}
+  .pm-r{font-size:12.5px;font-weight:700;margin-top:3px}
+  .pm-l{font-size:9px;color:var(--mut);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  @media(max-width:440px){ .pm-nm{font-size:9px} .pm-pts{font-size:20px} .pmini{padding:8px 3px 7px} }
   .daysgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px;align-items:start}
   .dayblock{min-width:0}
   .dayhdr{display:flex;justify-content:space-between;align-items:baseline;gap:8px;
@@ -72,17 +82,17 @@
   .daynav .lbl small{font-size:11px;color:var(--mut)}
   .daynav .lbl .today{color:var(--accent)}
   /* ---- match ---- */
-  .match{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:12px}
-  .m-top{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:var(--mut);margin-bottom:9px}
+  .match{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:9px 10px;margin-bottom:8px}
+  .m-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--mut);margin-bottom:7px}
   .m-grp{background:var(--bg2);padding:2px 8px;border-radius:20px;font-weight:700}
   .m-live{color:var(--red);font-weight:800}
-  .m-teams{display:flex;align-items:center;gap:8px;margin-bottom:11px}
+  .m-teams{display:flex;align-items:center;gap:8px;margin-bottom:8px}
   .m-teams .tm{flex:1;font-weight:700;font-size:15px}
   .m-teams .tm.away{text-align:right}
   .m-teams .res{background:var(--bg2);border-radius:10px;padding:5px 11px;font-weight:800;font-size:17px;min-width:60px;text-align:center}
   .m-teams .res.pending{color:var(--mut);font-weight:600}
-  .preds{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-  .pred{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border-radius:10px;padding:7px 9px;
+  .preds{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+  .pred{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border-radius:9px;padding:5px 7px;
     border-left:3px solid var(--c)}
   .pred .pl{min-width:0}
   .pred .pl b{font-size:12.5px;display:block;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -201,22 +211,13 @@ function posCard(p){
   const lead = s.leaderPoints==null?'—':s.leaderPoints;
   const gap = (s.myPoints!=null&&s.leaderPoints!=null)?(s.leaderPoints-s.myPoints):null;
   const rank = s.myRank?('#'+s.myRank):'—';
-  const parts = s.participants?(' de '+s.participants):'';
-  return `<div class="pcard" style="--c:${p.color}">
-      <div class="row1">
-        <div class="nm"><span class="fl">${p.flag}</span><div>
-          <b>${p.name}</b><small>${p.account} · col. "${p.col}"</small></div></div>
-        <div class="pos"><div class="big">${rank}</div><small>posición${parts}</small></div>
-      </div>
-      <div class="stats">
-        <div class="stat me"><div class="v">${me}</div><div class="l">Mis pts</div></div>
-        <div class="stat lead"><div class="v">${lead}</div><div class="l">Líder${s.leaderName?(' · '+s.leaderName):''}</div></div>
-        <div class="stat"><div class="v">${gap==null?'—':(gap===0?'🥇':'-'+gap)}</div><div class="l">${gap===0?'puntero':'a líder'}</div></div>
-      </div>
-      <div class="gap"><span>Reglas distintas</span><a href="${p.url}" target="_blank">abrir site ↗</a></div>
-      <button class="rbtn" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'ocultar reglas':'ver reglas ▾'">ver reglas ▾</button>
-      <div class="rules">${p.rules}</div>
-    </div>`;
+  const gtxt = gap==null?'' : (gap===0?' 🥇' : ' · -'+gap);
+  return `<a class="pmini" style="--c:${p.color}" href="${p.url}" target="_blank" title="${p.name} · ${p.account}">
+      <div class="pm-h"><span class="pm-fl">${p.flag}</span><span class="pm-nm">${p.col}</span></div>
+      <div class="pm-pts">${me}<span>pts</span></div>
+      <div class="pm-r">${rank}</div>
+      <div class="pm-l">líder ${lead}${gtxt}</div>
+    </a>`;
 }
 
 function buildMatch(m){

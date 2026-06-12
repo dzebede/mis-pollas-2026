@@ -1,0 +1,2392 @@
+{
+  "generated": "2026-06-12",
+  "timezone": "America/Panama (UTC-5)",
+  "count": 72,
+  "matches": [
+    {
+      "n": 1,
+      "kickoff": "2026-06-11T14:00:00-05:00",
+      "date": "2026-06-11",
+      "time": "14:00",
+      "group": "A",
+      "home": "México",
+      "away": "Sudáfrica",
+      "venue": "Estadio Azteca, CDMX",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          2,
+          0
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          1,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": [
+        2,
+        0
+      ]
+    },
+    {
+      "n": 2,
+      "kickoff": "2026-06-11T21:00:00-05:00",
+      "date": "2026-06-11",
+      "time": "21:00",
+      "group": "A",
+      "home": "Corea del Sur",
+      "away": "República Checa",
+      "venue": "Estadio Akron, Guadalajara",
+      "predictions": {
+        "pollapato": [
+          0,
+          1
+        ],
+        "polla26": [
+          1,
+          1
+        ],
+        "triplea": [
+          1,
+          0
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          1
+        ]
+      },
+      "result": [
+        2,
+        1
+      ]
+    },
+    {
+      "n": 3,
+      "kickoff": "2026-06-12T14:00:00-05:00",
+      "date": "2026-06-12",
+      "time": "14:00",
+      "group": "B",
+      "home": "Canadá",
+      "away": "Bosnia y Herzegovina",
+      "venue": "BMO Field, Toronto",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          1,
+          0
+        ],
+        "triplea": [
+          1,
+          0
+        ],
+        "triplea2": [
+          2,
+          1
+        ],
+        "kicktipp": [
+          1,
+          0
+        ]
+      },
+      "result": [
+        0,
+        1
+      ]
+    },
+    {
+      "n": 4,
+      "kickoff": "2026-06-12T20:00:00-05:00",
+      "date": "2026-06-12",
+      "time": "20:00",
+      "group": "D",
+      "home": "Estados Unidos",
+      "away": "Paraguay",
+      "venue": "SoFi Stadium, Los Angeles",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          1,
+          0
+        ],
+        "triplea": [
+          1,
+          0
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 5,
+      "kickoff": "2026-06-13T14:00:00-05:00",
+      "date": "2026-06-13",
+      "time": "14:00",
+      "group": "B",
+      "home": "Catar",
+      "away": "Suiza",
+      "venue": "Levi's Stadium, San Francisco",
+      "predictions": {
+        "pollapato": [
+          0,
+          2
+        ],
+        "polla26": [
+          0,
+          2
+        ],
+        "triplea": [
+          0,
+          2
+        ],
+        "triplea2": [
+          0,
+          2
+        ],
+        "kicktipp": [
+          0,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 6,
+      "kickoff": "2026-06-13T17:00:00-05:00",
+      "date": "2026-06-13",
+      "time": "17:00",
+      "group": "C",
+      "home": "Brasil",
+      "away": "Marruecos",
+      "venue": "MetLife Stadium, New York",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          1,
+          1
+        ],
+        "triplea": [
+          1,
+          0
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 7,
+      "kickoff": "2026-06-13T20:00:00-05:00",
+      "date": "2026-06-13",
+      "time": "20:00",
+      "group": "C",
+      "home": "Haití",
+      "away": "Escocia",
+      "venue": "Gillette Stadium, Boston",
+      "predictions": {
+        "pollapato": [
+          0,
+          2
+        ],
+        "polla26": [
+          0,
+          1
+        ],
+        "triplea": [
+          0,
+          2
+        ],
+        "triplea2": [
+          0,
+          1
+        ],
+        "kicktipp": [
+          0,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 8,
+      "kickoff": "2026-06-13T23:00:00-05:00",
+      "date": "2026-06-13",
+      "time": "23:00",
+      "group": "D",
+      "home": "Australia",
+      "away": "Turquía",
+      "venue": "BC Place, Vancouver",
+      "predictions": {
+        "pollapato": [
+          1,
+          2
+        ],
+        "polla26": [
+          1,
+          1
+        ],
+        "triplea": [
+          1,
+          2
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 9,
+      "kickoff": "2026-06-14T12:00:00-05:00",
+      "date": "2026-06-14",
+      "time": "12:00",
+      "group": "E",
+      "home": "Alemania",
+      "away": "Curazao",
+      "venue": "NRG Stadium, Houston",
+      "predictions": {
+        "pollapato": [
+          3,
+          0
+        ],
+        "polla26": [
+          4,
+          0
+        ],
+        "triplea": [
+          5,
+          0
+        ],
+        "triplea2": [
+          4,
+          0
+        ],
+        "kicktipp": [
+          4,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 10,
+      "kickoff": "2026-06-14T15:00:00-05:00",
+      "date": "2026-06-14",
+      "time": "15:00",
+      "group": "F",
+      "home": "Países Bajos",
+      "away": "Japón",
+      "venue": "AT&T Stadium, Dallas",
+      "predictions": {
+        "pollapato": [
+          1,
+          1
+        ],
+        "polla26": [
+          1,
+          1
+        ],
+        "triplea": [
+          1,
+          0
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 11,
+      "kickoff": "2026-06-14T18:00:00-05:00",
+      "date": "2026-06-14",
+      "time": "18:00",
+      "group": "E",
+      "home": "Costa de Marfil",
+      "away": "Ecuador",
+      "venue": "Lincoln Financial Field, Philadelphia",
+      "predictions": {
+        "pollapato": [
+          0,
+          0
+        ],
+        "polla26": [
+          0,
+          1
+        ],
+        "triplea": [
+          0,
+          1
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          0,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 12,
+      "kickoff": "2026-06-14T21:00:00-05:00",
+      "date": "2026-06-14",
+      "time": "21:00",
+      "group": "F",
+      "home": "Suecia",
+      "away": "Túnez",
+      "venue": "Estadio BBVA, Monterrey",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          1,
+          0
+        ],
+        "triplea": [
+          1,
+          0
+        ],
+        "triplea2": [
+          1,
+          0
+        ],
+        "kicktipp": [
+          1,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 13,
+      "kickoff": "2026-06-15T11:00:00-05:00",
+      "date": "2026-06-15",
+      "time": "11:00",
+      "group": "H",
+      "home": "España",
+      "away": "Cabo Verde",
+      "venue": "Mercedes-Benz Stadium, Atlanta",
+      "predictions": {
+        "pollapato": [
+          3,
+          0
+        ],
+        "polla26": [
+          3,
+          0
+        ],
+        "triplea": [
+          3,
+          0
+        ],
+        "triplea2": [
+          3,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 14,
+      "kickoff": "2026-06-15T14:00:00-05:00",
+      "date": "2026-06-15",
+      "time": "14:00",
+      "group": "G",
+      "home": "Bélgica",
+      "away": "Egipto",
+      "venue": "Lumen Field, Seattle",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          2,
+          1
+        ],
+        "triplea": [
+          2,
+          1
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          2,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 15,
+      "kickoff": "2026-06-15T17:00:00-05:00",
+      "date": "2026-06-15",
+      "time": "17:00",
+      "group": "H",
+      "home": "Arabia Saudita",
+      "away": "Uruguay",
+      "venue": "Hard Rock Stadium, Miami",
+      "predictions": {
+        "pollapato": [
+          0,
+          2
+        ],
+        "polla26": [
+          0,
+          2
+        ],
+        "triplea": [
+          1,
+          2
+        ],
+        "triplea2": [
+          0,
+          2
+        ],
+        "kicktipp": [
+          0,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 16,
+      "kickoff": "2026-06-15T20:00:00-05:00",
+      "date": "2026-06-15",
+      "time": "20:00",
+      "group": "G",
+      "home": "Irán",
+      "away": "Nueva Zelanda",
+      "venue": "SoFi Stadium, Los Angeles",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          1,
+          0
+        ],
+        "triplea": [
+          1,
+          0
+        ],
+        "triplea2": [
+          1,
+          0
+        ],
+        "kicktipp": [
+          1,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 17,
+      "kickoff": "2026-06-16T14:00:00-05:00",
+      "date": "2026-06-16",
+      "time": "14:00",
+      "group": "I",
+      "home": "Francia",
+      "away": "Senegal",
+      "venue": "MetLife Stadium, New York",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          2,
+          1
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          2,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 18,
+      "kickoff": "2026-06-16T17:00:00-05:00",
+      "date": "2026-06-16",
+      "time": "17:00",
+      "group": "I",
+      "home": "Irak",
+      "away": "Noruega",
+      "venue": "Gillette Stadium, Boston",
+      "predictions": {
+        "pollapato": [
+          0,
+          2
+        ],
+        "polla26": [
+          0,
+          2
+        ],
+        "triplea": [
+          0,
+          3
+        ],
+        "triplea2": [
+          0,
+          2
+        ],
+        "kicktipp": [
+          0,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 19,
+      "kickoff": "2026-06-16T20:00:00-05:00",
+      "date": "2026-06-16",
+      "time": "20:00",
+      "group": "J",
+      "home": "Argentina",
+      "away": "Argelia",
+      "venue": "GEHA Field, Kansas City",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          2,
+          0
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          2,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 20,
+      "kickoff": "2026-06-16T23:00:00-05:00",
+      "date": "2026-06-16",
+      "time": "23:00",
+      "group": "J",
+      "home": "Austria",
+      "away": "Jordania",
+      "venue": "Levi's Stadium, San Francisco",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          2,
+          0
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          2,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 21,
+      "kickoff": "2026-06-17T12:00:00-05:00",
+      "date": "2026-06-17",
+      "time": "12:00",
+      "group": "K",
+      "home": "Portugal",
+      "away": "RD del Congo",
+      "venue": "NRG Stadium, Houston",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          2,
+          0
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          3,
+          1
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 22,
+      "kickoff": "2026-06-17T15:00:00-05:00",
+      "date": "2026-06-17",
+      "time": "15:00",
+      "group": "L",
+      "home": "Inglaterra",
+      "away": "Croacia",
+      "venue": "AT&T Stadium, Dallas",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          1,
+          0
+        ],
+        "triplea": [
+          1,
+          0
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 23,
+      "kickoff": "2026-06-17T18:00:00-05:00",
+      "date": "2026-06-17",
+      "time": "18:00",
+      "group": "L",
+      "home": "Ghana",
+      "away": "Panamá",
+      "venue": "BMO Field, Toronto",
+      "predictions": {
+        "pollapato": [
+          1,
+          1
+        ],
+        "polla26": [
+          1,
+          2
+        ],
+        "triplea": [
+          1,
+          0
+        ],
+        "triplea2": [
+          1,
+          0
+        ],
+        "kicktipp": [
+          1,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 24,
+      "kickoff": "2026-06-17T21:00:00-05:00",
+      "date": "2026-06-17",
+      "time": "21:00",
+      "group": "K",
+      "home": "Uzbekistán",
+      "away": "Colombia",
+      "venue": "Estadio Azteca, CDMX",
+      "predictions": {
+        "pollapato": [
+          0,
+          2
+        ],
+        "polla26": [
+          0,
+          1
+        ],
+        "triplea": [
+          0,
+          2
+        ],
+        "triplea2": [
+          0,
+          1
+        ],
+        "kicktipp": [
+          0,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 25,
+      "kickoff": "2026-06-18T11:00:00-05:00",
+      "date": "2026-06-18",
+      "time": "11:00",
+      "group": "A",
+      "home": "República Checa",
+      "away": "Sudáfrica",
+      "venue": "Mercedes-Benz Stadium, Atlanta",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          1,
+          0
+        ],
+        "triplea": [
+          1,
+          0
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 26,
+      "kickoff": "2026-06-18T14:00:00-05:00",
+      "date": "2026-06-18",
+      "time": "14:00",
+      "group": "B",
+      "home": "Suiza",
+      "away": "Bosnia y Herzegovina",
+      "venue": "SoFi Stadium, Los Angeles",
+      "predictions": {
+        "pollapato": [
+          2,
+          1
+        ],
+        "polla26": [
+          1,
+          0
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          1,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 27,
+      "kickoff": "2026-06-18T17:00:00-05:00",
+      "date": "2026-06-18",
+      "time": "17:00",
+      "group": "B",
+      "home": "Canadá",
+      "away": "Catar",
+      "venue": "BC Place, Vancouver",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          2,
+          0
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          2,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 28,
+      "kickoff": "2026-06-18T20:00:00-05:00",
+      "date": "2026-06-18",
+      "time": "20:00",
+      "group": "A",
+      "home": "México",
+      "away": "Corea del Sur",
+      "venue": "Estadio Akron, Guadalajara",
+      "predictions": {
+        "pollapato": [
+          2,
+          1
+        ],
+        "polla26": [
+          1,
+          0
+        ],
+        "triplea": [
+          1,
+          0
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          2,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 29,
+      "kickoff": "2026-06-19T14:00:00-05:00",
+      "date": "2026-06-19",
+      "time": "14:00",
+      "group": "D",
+      "home": "Estados Unidos",
+      "away": "Australia",
+      "venue": "Lumen Field, Seattle",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          2,
+          1
+        ],
+        "triplea": [
+          2,
+          1
+        ],
+        "triplea2": [
+          2,
+          0
+        ],
+        "kicktipp": [
+          2,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 30,
+      "kickoff": "2026-06-19T17:00:00-05:00",
+      "date": "2026-06-19",
+      "time": "17:00",
+      "group": "C",
+      "home": "Escocia",
+      "away": "Marruecos",
+      "venue": "Gillette Stadium, Boston",
+      "predictions": {
+        "pollapato": [
+          0,
+          1
+        ],
+        "polla26": [
+          1,
+          1
+        ],
+        "triplea": [
+          1,
+          1
+        ],
+        "triplea2": [
+          0,
+          1
+        ],
+        "kicktipp": [
+          0,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 31,
+      "kickoff": "2026-06-19T20:00:00-05:00",
+      "date": "2026-06-19",
+      "time": "20:00",
+      "group": "C",
+      "home": "Brasil",
+      "away": "Haití",
+      "venue": "Lincoln Financial Field, Philadelphia",
+      "predictions": {
+        "pollapato": [
+          3,
+          0
+        ],
+        "polla26": [
+          3,
+          1
+        ],
+        "triplea": [
+          4,
+          0
+        ],
+        "triplea2": [
+          3,
+          0
+        ],
+        "kicktipp": [
+          3,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 32,
+      "kickoff": "2026-06-19T23:00:00-05:00",
+      "date": "2026-06-19",
+      "time": "23:00",
+      "group": "D",
+      "home": "Turquía",
+      "away": "Paraguay",
+      "venue": "Levi's Stadium, San Francisco",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          1,
+          1
+        ],
+        "triplea": [
+          0,
+          1
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 33,
+      "kickoff": "2026-06-20T12:00:00-05:00",
+      "date": "2026-06-20",
+      "time": "12:00",
+      "group": "F",
+      "home": "Países Bajos",
+      "away": "Suecia",
+      "venue": "NRG Stadium, Houston",
+      "predictions": {
+        "pollapato": [
+          2,
+          1
+        ],
+        "polla26": [
+          2,
+          1
+        ],
+        "triplea": [
+          2,
+          1
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          2,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 34,
+      "kickoff": "2026-06-20T15:00:00-05:00",
+      "date": "2026-06-20",
+      "time": "15:00",
+      "group": "E",
+      "home": "Alemania",
+      "away": "Costa de Marfil",
+      "venue": "BMO Field, Toronto",
+      "predictions": {
+        "pollapato": [
+          2,
+          1
+        ],
+        "polla26": [
+          2,
+          0
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          2,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 35,
+      "kickoff": "2026-06-20T19:00:00-05:00",
+      "date": "2026-06-20",
+      "time": "19:00",
+      "group": "E",
+      "home": "Ecuador",
+      "away": "Curazao",
+      "venue": "GEHA Field, Kansas City",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          2,
+          0
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          2,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 36,
+      "kickoff": "2026-06-20T23:00:00-05:00",
+      "date": "2026-06-20",
+      "time": "23:00",
+      "group": "F",
+      "home": "Túnez",
+      "away": "Japón",
+      "venue": "Estadio BBVA, Monterrey",
+      "predictions": {
+        "pollapato": [
+          0,
+          2
+        ],
+        "polla26": [
+          0,
+          1
+        ],
+        "triplea": [
+          0,
+          1
+        ],
+        "triplea2": [
+          0,
+          2
+        ],
+        "kicktipp": [
+          0,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 37,
+      "kickoff": "2026-06-21T11:00:00-05:00",
+      "date": "2026-06-21",
+      "time": "11:00",
+      "group": "H",
+      "home": "España",
+      "away": "Arabia Saudita",
+      "venue": "Mercedes-Benz Stadium, Atlanta",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          3,
+          0
+        ],
+        "triplea": [
+          3,
+          0
+        ],
+        "triplea2": [
+          2,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 38,
+      "kickoff": "2026-06-21T14:00:00-05:00",
+      "date": "2026-06-21",
+      "time": "14:00",
+      "group": "G",
+      "home": "Bélgica",
+      "away": "Irán",
+      "venue": "SoFi Stadium, Los Angeles",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          1,
+          0
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          1,
+          0
+        ],
+        "kicktipp": [
+          1,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 39,
+      "kickoff": "2026-06-21T17:00:00-05:00",
+      "date": "2026-06-21",
+      "time": "17:00",
+      "group": "H",
+      "home": "Uruguay",
+      "away": "Cabo Verde",
+      "venue": "Hard Rock Stadium, Miami",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          2,
+          0
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          2,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 40,
+      "kickoff": "2026-06-21T20:00:00-05:00",
+      "date": "2026-06-21",
+      "time": "20:00",
+      "group": "G",
+      "home": "Nueva Zelanda",
+      "away": "Egipto",
+      "venue": "BC Place, Vancouver",
+      "predictions": {
+        "pollapato": [
+          0,
+          2
+        ],
+        "polla26": [
+          0,
+          1
+        ],
+        "triplea": [
+          0,
+          1
+        ],
+        "triplea2": [
+          0,
+          1
+        ],
+        "kicktipp": [
+          0,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 41,
+      "kickoff": "2026-06-22T12:00:00-05:00",
+      "date": "2026-06-22",
+      "time": "12:00",
+      "group": "J",
+      "home": "Argentina",
+      "away": "Austria",
+      "venue": "AT&T Stadium, Dallas",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          2,
+          1
+        ],
+        "triplea": [
+          2,
+          1
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          2,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 42,
+      "kickoff": "2026-06-22T16:00:00-05:00",
+      "date": "2026-06-22",
+      "time": "16:00",
+      "group": "I",
+      "home": "Francia",
+      "away": "Irak",
+      "venue": "Lincoln Financial Field, Philadelphia",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          3,
+          0
+        ],
+        "triplea": [
+          3,
+          0
+        ],
+        "triplea2": [
+          3,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 43,
+      "kickoff": "2026-06-22T19:00:00-05:00",
+      "date": "2026-06-22",
+      "time": "19:00",
+      "group": "I",
+      "home": "Noruega",
+      "away": "Senegal",
+      "venue": "MetLife Stadium, New York",
+      "predictions": {
+        "pollapato": [
+          2,
+          1
+        ],
+        "polla26": [
+          2,
+          1
+        ],
+        "triplea": [
+          2,
+          1
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          2,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 44,
+      "kickoff": "2026-06-22T22:00:00-05:00",
+      "date": "2026-06-22",
+      "time": "22:00",
+      "group": "J",
+      "home": "Jordania",
+      "away": "Argelia",
+      "venue": "Levi's Stadium, San Francisco",
+      "predictions": {
+        "pollapato": [
+          0,
+          1
+        ],
+        "polla26": [
+          0,
+          1
+        ],
+        "triplea": [
+          0,
+          1
+        ],
+        "triplea2": [
+          0,
+          1
+        ],
+        "kicktipp": [
+          0,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 45,
+      "kickoff": "2026-06-23T12:00:00-05:00",
+      "date": "2026-06-23",
+      "time": "12:00",
+      "group": "K",
+      "home": "Portugal",
+      "away": "Uzbekistán",
+      "venue": "NRG Stadium, Houston",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          2,
+          0
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          2,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 46,
+      "kickoff": "2026-06-23T15:00:00-05:00",
+      "date": "2026-06-23",
+      "time": "15:00",
+      "group": "L",
+      "home": "Inglaterra",
+      "away": "Ghana",
+      "venue": "Gillette Stadium, Boston",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          2,
+          1
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          2,
+          1
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 47,
+      "kickoff": "2026-06-23T18:00:00-05:00",
+      "date": "2026-06-23",
+      "time": "18:00",
+      "group": "L",
+      "home": "Panamá",
+      "away": "Croacia",
+      "venue": "BMO Field, Toronto",
+      "predictions": {
+        "pollapato": [
+          0,
+          2
+        ],
+        "polla26": [
+          0,
+          2
+        ],
+        "triplea": [
+          0,
+          2
+        ],
+        "triplea2": [
+          0,
+          2
+        ],
+        "kicktipp": [
+          0,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 48,
+      "kickoff": "2026-06-23T21:00:00-05:00",
+      "date": "2026-06-23",
+      "time": "21:00",
+      "group": "K",
+      "home": "Colombia",
+      "away": "RD del Congo",
+      "venue": "Estadio Akron, Guadalajara",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          2,
+          0
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          2,
+          1
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 49,
+      "kickoff": "2026-06-24T14:00:00-05:00",
+      "date": "2026-06-24",
+      "time": "14:00",
+      "group": "B",
+      "home": "Suiza",
+      "away": "Canadá",
+      "venue": "BC Place, Vancouver",
+      "predictions": {
+        "pollapato": [
+          1,
+          0
+        ],
+        "polla26": [
+          1,
+          1
+        ],
+        "triplea": [
+          1,
+          1
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 50,
+      "kickoff": "2026-06-24T14:00:00-05:00",
+      "date": "2026-06-24",
+      "time": "14:00",
+      "group": "B",
+      "home": "Bosnia y Herzegovina",
+      "away": "Catar",
+      "venue": "Lumen Field, Seattle",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          2,
+          1
+        ],
+        "triplea": [
+          1,
+          0
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 51,
+      "kickoff": "2026-06-24T17:00:00-05:00",
+      "date": "2026-06-24",
+      "time": "17:00",
+      "group": "C",
+      "home": "Marruecos",
+      "away": "Haití",
+      "venue": "Mercedes-Benz Stadium, Atlanta",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          2,
+          0
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          2,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 52,
+      "kickoff": "2026-06-24T17:00:00-05:00",
+      "date": "2026-06-24",
+      "time": "17:00",
+      "group": "C",
+      "home": "Escocia",
+      "away": "Brasil",
+      "venue": "Hard Rock Stadium, Miami",
+      "predictions": {
+        "pollapato": [
+          0,
+          1
+        ],
+        "polla26": [
+          1,
+          2
+        ],
+        "triplea": [
+          0,
+          2
+        ],
+        "triplea2": [
+          0,
+          2
+        ],
+        "kicktipp": [
+          0,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 53,
+      "kickoff": "2026-06-24T20:00:00-05:00",
+      "date": "2026-06-24",
+      "time": "20:00",
+      "group": "A",
+      "home": "República Checa",
+      "away": "México",
+      "venue": "Estadio Azteca, CDMX",
+      "predictions": {
+        "pollapato": [
+          1,
+          1
+        ],
+        "polla26": [
+          0,
+          1
+        ],
+        "triplea": [
+          0,
+          1
+        ],
+        "triplea2": [
+          0,
+          1
+        ],
+        "kicktipp": [
+          0,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 54,
+      "kickoff": "2026-06-24T20:00:00-05:00",
+      "date": "2026-06-24",
+      "time": "20:00",
+      "group": "A",
+      "home": "Sudáfrica",
+      "away": "Corea del Sur",
+      "venue": "Estadio BBVA, Monterrey",
+      "predictions": {
+        "pollapato": [
+          0,
+          1
+        ],
+        "polla26": [
+          0,
+          1
+        ],
+        "triplea": [
+          0,
+          1
+        ],
+        "triplea2": [
+          0,
+          1
+        ],
+        "kicktipp": [
+          0,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 55,
+      "kickoff": "2026-06-25T15:00:00-05:00",
+      "date": "2026-06-25",
+      "time": "15:00",
+      "group": "E",
+      "home": "Ecuador",
+      "away": "Alemania",
+      "venue": "MetLife Stadium, New York",
+      "predictions": {
+        "pollapato": [
+          1,
+          1
+        ],
+        "polla26": [
+          1,
+          2
+        ],
+        "triplea": [
+          0,
+          2
+        ],
+        "triplea2": [
+          1,
+          2
+        ],
+        "kicktipp": [
+          1,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 56,
+      "kickoff": "2026-06-25T15:00:00-05:00",
+      "date": "2026-06-25",
+      "time": "15:00",
+      "group": "E",
+      "home": "Curazao",
+      "away": "Costa de Marfil",
+      "venue": "Lincoln Financial Field, Philadelphia",
+      "predictions": {
+        "pollapato": [
+          0,
+          2
+        ],
+        "polla26": [
+          1,
+          2
+        ],
+        "triplea": [
+          0,
+          2
+        ],
+        "triplea2": [
+          1,
+          2
+        ],
+        "kicktipp": [
+          0,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 57,
+      "kickoff": "2026-06-25T18:00:00-05:00",
+      "date": "2026-06-25",
+      "time": "18:00",
+      "group": "F",
+      "home": "Túnez",
+      "away": "Países Bajos",
+      "venue": "GEHA Field, Kansas City",
+      "predictions": {
+        "pollapato": [
+          0,
+          1
+        ],
+        "polla26": [
+          0,
+          2
+        ],
+        "triplea": [
+          0,
+          2
+        ],
+        "triplea2": [
+          0,
+          2
+        ],
+        "kicktipp": [
+          0,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 58,
+      "kickoff": "2026-06-25T18:00:00-05:00",
+      "date": "2026-06-25",
+      "time": "18:00",
+      "group": "F",
+      "home": "Japón",
+      "away": "Suecia",
+      "venue": "AT&T Stadium, Dallas",
+      "predictions": {
+        "pollapato": [
+          2,
+          1
+        ],
+        "polla26": [
+          2,
+          2
+        ],
+        "triplea": [
+          1,
+          1
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 59,
+      "kickoff": "2026-06-25T21:00:00-05:00",
+      "date": "2026-06-25",
+      "time": "21:00",
+      "group": "D",
+      "home": "Turquía",
+      "away": "Estados Unidos",
+      "venue": "SoFi Stadium, Los Angeles",
+      "predictions": {
+        "pollapato": [
+          1,
+          2
+        ],
+        "polla26": [
+          1,
+          2
+        ],
+        "triplea": [
+          1,
+          1
+        ],
+        "triplea2": [
+          1,
+          2
+        ],
+        "kicktipp": [
+          1,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 60,
+      "kickoff": "2026-06-25T21:00:00-05:00",
+      "date": "2026-06-25",
+      "time": "21:00",
+      "group": "D",
+      "home": "Paraguay",
+      "away": "Australia",
+      "venue": "Levi's Stadium, San Francisco",
+      "predictions": {
+        "pollapato": [
+          2,
+          1
+        ],
+        "polla26": [
+          1,
+          0
+        ],
+        "triplea": [
+          1,
+          0
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 61,
+      "kickoff": "2026-06-26T14:00:00-05:00",
+      "date": "2026-06-26",
+      "time": "14:00",
+      "group": "I",
+      "home": "Noruega",
+      "away": "Francia",
+      "venue": "Gillette Stadium, Boston",
+      "predictions": {
+        "pollapato": [
+          1,
+          2
+        ],
+        "polla26": [
+          1,
+          2
+        ],
+        "triplea": [
+          1,
+          2
+        ],
+        "triplea2": [
+          1,
+          2
+        ],
+        "kicktipp": [
+          1,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 62,
+      "kickoff": "2026-06-26T14:00:00-05:00",
+      "date": "2026-06-26",
+      "time": "14:00",
+      "group": "I",
+      "home": "Senegal",
+      "away": "Irak",
+      "venue": "BMO Field, Toronto",
+      "predictions": {
+        "pollapato": [
+          2,
+          0
+        ],
+        "polla26": [
+          2,
+          1
+        ],
+        "triplea": [
+          2,
+          0
+        ],
+        "triplea2": [
+          2,
+          0
+        ],
+        "kicktipp": [
+          2,
+          0
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 63,
+      "kickoff": "2026-06-26T19:00:00-05:00",
+      "date": "2026-06-26",
+      "time": "19:00",
+      "group": "H",
+      "home": "Uruguay",
+      "away": "España",
+      "venue": "Estadio Akron, Guadalajara",
+      "predictions": {
+        "pollapato": [
+          1,
+          1
+        ],
+        "polla26": [
+          1,
+          2
+        ],
+        "triplea": [
+          1,
+          1
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 64,
+      "kickoff": "2026-06-26T19:00:00-05:00",
+      "date": "2026-06-26",
+      "time": "19:00",
+      "group": "H",
+      "home": "Cabo Verde",
+      "away": "Arabia Saudita",
+      "venue": "NRG Stadium, Houston",
+      "predictions": {
+        "pollapato": [
+          1,
+          1
+        ],
+        "polla26": [
+          1,
+          2
+        ],
+        "triplea": [
+          1,
+          1
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 65,
+      "kickoff": "2026-06-26T22:00:00-05:00",
+      "date": "2026-06-26",
+      "time": "22:00",
+      "group": "G",
+      "home": "Nueva Zelanda",
+      "away": "Bélgica",
+      "venue": "BC Place, Vancouver",
+      "predictions": {
+        "pollapato": [
+          0,
+          2
+        ],
+        "polla26": [
+          0,
+          2
+        ],
+        "triplea": [
+          0,
+          2
+        ],
+        "triplea2": [
+          0,
+          2
+        ],
+        "kicktipp": [
+          0,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 66,
+      "kickoff": "2026-06-26T22:00:00-05:00",
+      "date": "2026-06-26",
+      "time": "22:00",
+      "group": "G",
+      "home": "Egipto",
+      "away": "Irán",
+      "venue": "Lumen Field, Seattle",
+      "predictions": {
+        "pollapato": [
+          0,
+          0
+        ],
+        "polla26": [
+          1,
+          1
+        ],
+        "triplea": [
+          1,
+          1
+        ],
+        "triplea2": [
+          0,
+          0
+        ],
+        "kicktipp": [
+          1,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 67,
+      "kickoff": "2026-06-27T16:00:00-05:00",
+      "date": "2026-06-27",
+      "time": "16:00",
+      "group": "L",
+      "home": "Panamá",
+      "away": "Inglaterra",
+      "venue": "MetLife Stadium, New York",
+      "predictions": {
+        "pollapato": [
+          0,
+          2
+        ],
+        "polla26": [
+          0,
+          3
+        ],
+        "triplea": [
+          0,
+          3
+        ],
+        "triplea2": [
+          0,
+          2
+        ],
+        "kicktipp": [
+          0,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 68,
+      "kickoff": "2026-06-27T16:00:00-05:00",
+      "date": "2026-06-27",
+      "time": "16:00",
+      "group": "L",
+      "home": "Croacia",
+      "away": "Ghana",
+      "venue": "Lincoln Financial Field, Philadelphia",
+      "predictions": {
+        "pollapato": [
+          2,
+          1
+        ],
+        "polla26": [
+          2,
+          1
+        ],
+        "triplea": [
+          1,
+          1
+        ],
+        "triplea2": [
+          1,
+          0
+        ],
+        "kicktipp": [
+          2,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 69,
+      "kickoff": "2026-06-27T18:30:00-05:00",
+      "date": "2026-06-27",
+      "time": "18:30",
+      "group": "K",
+      "home": "Colombia",
+      "away": "Portugal",
+      "venue": "Hard Rock Stadium, Miami",
+      "predictions": {
+        "pollapato": [
+          1,
+          2
+        ],
+        "polla26": [
+          1,
+          1
+        ],
+        "triplea": [
+          1,
+          1
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 70,
+      "kickoff": "2026-06-27T18:30:00-05:00",
+      "date": "2026-06-27",
+      "time": "18:30",
+      "group": "K",
+      "home": "RD del Congo",
+      "away": "Uzbekistán",
+      "venue": "Mercedes-Benz Stadium, Atlanta",
+      "predictions": {
+        "pollapato": [
+          1,
+          1
+        ],
+        "polla26": [
+          1,
+          1
+        ],
+        "triplea": [
+          1,
+          1
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          1
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 71,
+      "kickoff": "2026-06-27T21:00:00-05:00",
+      "date": "2026-06-27",
+      "time": "21:00",
+      "group": "J",
+      "home": "Jordania",
+      "away": "Argentina",
+      "venue": "AT&T Stadium, Dallas",
+      "predictions": {
+        "pollapato": [
+          0,
+          2
+        ],
+        "polla26": [
+          0,
+          3
+        ],
+        "triplea": [
+          0,
+          3
+        ],
+        "triplea2": [
+          0,
+          2
+        ],
+        "kicktipp": [
+          0,
+          2
+        ]
+      },
+      "result": null
+    },
+    {
+      "n": 72,
+      "kickoff": "2026-06-27T21:00:00-05:00",
+      "date": "2026-06-27",
+      "time": "21:00",
+      "group": "J",
+      "home": "Argelia",
+      "away": "Austria",
+      "venue": "GEHA Field, Kansas City",
+      "predictions": {
+        "pollapato": [
+          0,
+          1
+        ],
+        "polla26": [
+          1,
+          1
+        ],
+        "triplea": [
+          1,
+          1
+        ],
+        "triplea2": [
+          1,
+          1
+        ],
+        "kicktipp": [
+          1,
+          1
+        ]
+      },
+      "result": null
+    }
+  ]
+}

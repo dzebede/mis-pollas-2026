@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<title>Mis Pollas 2026</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+  :root{
+    --bg:#0b1020; --bg2:#121a33; --card:#161f3d; --card2:#1c2748;
+    --txt:#eaf0ff; --mut:#8fa0c7; --line:#26315a;
+    --green:#2fbf71; --yellow:#f2c14e; --blue:#4ea8de; --teal:#34c4b5;
+    --gray:#3a456b; --accent:#ffd23f; --red:#e5484d;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0;background:linear-gradient(180deg,#0b1020,#0d1430 40%,#0b1020);color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    padding:env(safe-area-inset-top) 0 calc(env(safe-area-inset-bottom) + 16px);min-height:100vh}
+  header{position:sticky;top:0;z-index:10;background:rgba(11,16,32,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);padding:12px 14px 0}
+  .h-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .h-top h1{font-size:17px;margin:0;font-weight:800;letter-spacing:.2px}
+  .h-top h1 span{color:var(--accent)}
+  .upd{font-size:11px;color:var(--mut);text-align:right;line-height:1.3}
+  .seg{display:flex;gap:6px;margin:12px 0 10px}
+  .seg button{flex:1;background:var(--card);color:var(--mut);border:1px solid var(--line);
+    padding:9px;border-radius:11px;font-size:14px;font-weight:700}
+  .seg button.on{background:var(--accent);color:#1a1300;border-color:var(--accent)}
+  main{padding:14px;max-width:560px;margin:0 auto}
+  /* ---- standings ---- */
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px;
+    border-left:5px solid var(--c)}
+  .pcard .row1{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .pcard .nm{display:flex;align-items:center;gap:9px;min-width:0}
+  .pcard .nm .fl{font-size:22px}
+  .pcard .nm b{font-size:16px;display:block;line-height:1.1}
+  .pcard .nm small{color:var(--mut);font-size:12px}
+  .pcard .pos{text-align:right;white-space:nowrap}
+  .pcard .pos .big{font-size:15px;font-weight:800}
+  .pcard .pos small{color:var(--mut);font-size:11px;display:block}
+  .stats{display:flex;gap:8px;margin-top:12px}
+  .stat{flex:1;background:var(--bg2);border-radius:11px;padding:9px;text-align:center}
+  .stat .v{font-size:21px;font-weight:800}
+  .stat .l{font-size:10.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+  .stat.me .v{color:var(--accent)}
+  .stat.lead .v{color:var(--green)}
+  .gap{font-size:12px;color:var(--mut);margin-top:10px;display:flex;justify-content:space-between;align-items:center}
+  .gap a{color:var(--blue);text-decoration:none;font-weight:700}
+  .rules{margin-top:9px;font-size:12px;color:var(--mut);line-height:1.45;border-top:1px solid var(--line);padding-top:9px;display:none}
+  .rules.open{display:block}
+  .rbtn{background:none;border:none;color:var(--blue);font-size:12px;font-weight:700;padding:0;margin-top:9px}
+  /* ---- day nav ---- */
+  .daynav{display:flex;align-items:center;justify-content:space-between;background:var(--card);
+    border:1px solid var(--line);border-radius:14px;padding:8px 6px;margin-bottom:14px;position:sticky;top:118px;z-index:5}
+  .daynav button{background:var(--card2);border:1px solid var(--line);color:var(--txt);width:42px;height:42px;
+    border-radius:11px;font-size:20px;font-weight:800}
+  .daynav .lbl{text-align:center;flex:1}
+  .daynav .lbl b{font-size:16px;display:block}
+  .daynav .lbl small{font-size:11px;color:var(--mut)}
+  .daynav .lbl .today{color:var(--accent)}
+  /* ---- match ---- */
+  .match{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:12px}
+  .m-top{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:var(--mut);margin-bottom:9px}
+  .m-grp{background:var(--bg2);padding:2px 8px;border-radius:20px;font-weight:700}
+  .m-live{color:var(--red);font-weight:800}
+  .m-teams{display:flex;align-items:center;gap:8px;margin-bottom:11px}
+  .m-teams .tm{flex:1;font-weight:700;font-size:15px}
+  .m-teams .tm.away{text-align:right}
+  .m-teams .res{background:var(--bg2);border-radius:10px;padding:5px 11px;font-weight:800;font-size:17px;min-width:60px;text-align:center}
+  .m-teams .res.pending{color:var(--mut);font-weight:600}
+  .preds{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+  .pred{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border-radius:10px;padding:7px 9px;
+    border-left:3px solid var(--c)}
+  .pred .pl{min-width:0}
+  .pred .pl b{font-size:12.5px;display:block;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pred .pl small{font-size:10px;color:var(--mut)}
+  .pred .sc{font-weight:800;font-size:15px;padding:2px 8px;border-radius:8px;background:var(--gray);white-space:nowrap}
+  .sc.exact{background:var(--green);color:#062513}
+  .sc.diff{background:var(--blue);color:#04243a}
+  .sc.tend{background:var(--yellow);color:#3a2c00}
+  .sc.miss{background:var(--gray);color:var(--mut)}
+  .pts-badge{font-size:9.5px;font-weight:800;margin-left:4px}
+  .empty{text-align:center;color:var(--mut);padding:40px 16px;font-size:14px}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;font-size:11px;color:var(--mut);margin:6px 0 16px}
+  .legend i{width:11px;height:11px;border-radius:3px;display:inline-block;vertical-align:-1px;margin-right:4px}
+  .note{font-size:11.5px;color:var(--mut);text-align:center;line-height:1.5;margin-top:6px}
+  .daysum{font-size:11.5px;color:var(--mut);text-align:center;margin:-4px 0 12px}
+  .daysum b{color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <div class="h-top">
+    <h1>Mis Pollas <span>Mundial 2026</span></h1>
+    <div class="upd" id="upd"></div>
+  </div>
+  <div class="seg">
+    <button id="segPart" class="on" onclick="setView('part')">⚽ Partidos</button>
+    <button id="segPos" onclick="setView('pos')">🏆 Posiciones</button>
+  </div>
+</header>
+<main>
+  <div id="viewPart"></div>
+  <div id="viewPos" style="display:none"></div>
+</main>
+
+<script>
+const TZ_OFFSET = -5; // Panamá UTC-5
+let CONFIG, MATCHES, STAND, byId={}, days=[], curDay=0, view='part';
+
+function panamaDate(d=new Date()){
+  const utc = d.getTime() + d.getTimezoneOffset()*60000;
+  return new Date(utc + TZ_OFFSET*3600000);
+}
+function ymd(d){ return d.toISOString().slice(0,10); }
+const TODAY = ymd(panamaDate());
+
+function tend(s){ return s[0]>s[1]?1 : s[0]<s[1]?-1:0; }
+function scorePred(pid, pred, res){
+  if(!pred||!res) return null;
+  const exact = pred[0]===res[0]&&pred[1]===res[1];
+  const diff = (pred[0]-pred[1])===(res[0]-res[1]);
+  const td = tend(pred)===tend(res);
+  switch(pid){
+    case 'pollapato': return exact?{pts:1,lvl:'exact'}:{pts:0,lvl:'miss'};
+    case 'polla26':   return exact?{pts:3,lvl:'exact'}: td?{pts:1,lvl:'tend'}:{pts:0,lvl:'miss'};
+    case 'triplea':
+    case 'triplea2':  return exact?{pts:3,lvl:'exact'}: td?{pts:1,lvl:'tend'}:{pts:0,lvl:'miss'};
+    case 'kicktipp':  return exact?{pts:4,lvl:'exact'}: diff?{pts:3,lvl:'diff'}: td?{pts:2,lvl:'tend'}:{pts:0,lvl:'miss'};
+  }
+  return {pts:0,lvl:'miss'};
+}
+
+const DOW=['dom','lun','mar','mié','jue','vie','sáb'];
+const MON=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+function prettyDay(ds){
+  const [y,m,d]=ds.split('-').map(Number);
+  const dt=new Date(Date.UTC(y,m-1,d));
+  return DOW[dt.getUTCDay()]+' '+d+' '+MON[m-1];
+}
+
+async function load(){
+  [CONFIG,MATCHES,STAND] = await Promise.all([
+    fetch('data/config.json?v='+Date.now()).then(r=>r.json()),
+    fetch('data/matches.json?v='+Date.now()).then(r=>r.json()),
+    fetch('data/standings.json?v='+Date.now()).then(r=>r.json())
+  ]);
+  CONFIG.pollas.forEach(p=>byId[p.id]=p);
+  days=[...new Set(MATCHES.matches.map(m=>m.date))].sort();
+  curDay = days.indexOf(TODAY);
+  if(curDay<0){ curDay = days.findIndex(d=>d>=TODAY); if(curDay<0) curDay=days.length-1; }
+  const u=new Date(STAND.updated);
+  document.getElementById('upd').innerHTML='actualizado<br>'+u.toLocaleString('es',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
+  renderPos(); renderPart();
+}
+
+function setView(v){
+  view=v;
+  document.getElementById('viewPart').style.display = v==='part'?'block':'none';
+  document.getElementById('viewPos').style.display  = v==='pos' ?'block':'none';
+  document.getElementById('segPart').className = v==='part'?'on':'';
+  document.getElementById('segPos').className  = v==='pos' ?'on':'';
+}
+
+function renderPos(){
+  let h='';
+  CONFIG.pollas.forEach(p=>{
+    const s=STAND.pollas[p.id]||{};
+    const me = s.myPoints==null?'—':s.myPoints;
+    const lead = s.leaderPoints==null?'—':s.leaderPoints;
+    const gap = (s.myPoints!=null&&s.leaderPoints!=null)?(s.leaderPoints-s.myPoints):null;
+    const rank = s.myRank?('#'+s.myRank):'—';
+    const parts = s.participants?(' de '+s.participants):'';
+    h+=`<div class="pcard" style="--c:${p.color}">
+      <div class="row1">
+        <div class="nm"><span class="fl">${p.flag}</span><div>
+          <b>${p.name}</b><small>${p.account} · col. "${p.col}"</small></div></div>
+        <div class="pos"><div class="big">${rank}</div><small>posición${parts}</small></div>
+      </div>
+      <div class="stats">
+        <div class="stat me"><div class="v">${me}</div><div class="l">Mis pts</div></div>
+        <div class="stat lead"><div class="v">${lead}</div><div class="l">Líder${s.leaderName?(' · '+s.leaderName):''}</div></div>
+        <div class="stat"><div class="v">${gap==null?'—':(gap===0?'🥇':'-'+gap)}</div><div class="l">${gap===0?'puntero':'a líder'}</div></div>
+      </div>
+      <div class="gap"><span>Reglas distintas en este site</span><a href="${p.url}" target="_blank">abrir site ↗</a></div>
+      <button class="rbtn" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'ocultar reglas':'ver reglas ▾'">ver reglas ▾</button>
+      <div class="rules">${p.rules}</div>
+    </div>`;
+  });
+  document.getElementById('viewPos').innerHTML=h;
+}
+
+function renderPart(){
+  const ds=days[curDay];
+  const dayMatches=MATCHES.matches.filter(m=>m.date===ds);
+  // resumen de puntos del día (si hay resultados)
+  let dayPts={}, anyRes=false;
+  CONFIG.pollas.forEach(p=>dayPts[p.id]=0);
+  dayMatches.forEach(m=>{ if(m.result){anyRes=true; CONFIG.pollas.forEach(p=>{
+    const r=scorePred(p.id,m.predictions[p.id],m.result); if(r)dayPts[p.id]+=r.pts; });}});
+
+  let nav=`<div class="daynav">
+    <button onclick="chgDay(-1)" ${curDay<=0?'disabled style=opacity:.3':''}>‹</button>
+    <div class="lbl"><b class="${ds===TODAY?'today':''}">${ds===TODAY?'HOY · ':''}${prettyDay(ds)}</b>
+      <small>${dayMatches.length} partido${dayMatches.length!=1?'s':''}</small></div>
+    <button onclick="chgDay(1)" ${curDay>=days.length-1?'disabled style=opacity:.3':''}>›</button>
+  </div>`;
+
+  let sum='';
+  if(anyRes){
+    sum='<div class="daysum">Puntos del día: '+CONFIG.pollas.map(p=>`${p.flag}<b>${dayPts[p.id]}</b>`).join(' &nbsp; ')+'</div>';
+  }
+
+  let body='';
+  if(!dayMatches.length){ body='<div class="empty">No hay partidos este día.</div>'; }
+  dayMatches.forEach(m=>{
+    const res = m.result ? `${m.result[0]} - ${m.result[1]}` : '— : —';
+    const live = m.result?'<span class="m-live">● FINAL/EN VIVO</span>':'';
+    let preds='';
+    CONFIG.pollas.forEach(p=>{
+      const pr=m.predictions[p.id];
+      const txt = pr?`${pr[0]} - ${pr[1]}`:'—';
+      const r = scorePred(p.id,pr,m.result);
+      const lvl = r? r.lvl : '';
+      const badge = (r&&m.result)?`<span class="pts-badge">+${r.pts}</span>`:'';
+      preds+=`<div class="pred" style="--c:${p.color}">
+        <div class="pl"><b>${p.flag} ${p.col}</b><small>${p.name}</small></div>
+        <div class="sc ${m.result?lvl:''}">${txt}${badge}</div></div>`;
+    });
+    body+=`<div class="match">
+      <div class="m-top"><span class="m-grp">Grupo ${m.group}</span><span>${m.time} · P${m.n} ${live}</span></div>
+      <div class="m-teams"><div class="tm">${m.home}</div>
+        <div class="res ${m.result?'':'pending'}">${res}</div>
+        <div class="tm away">${m.away}</div></div>
+      <div class="preds">${preds}</div>
+    </div>`;
+  });
+
+  const legend=`<div class="legend">
+    <span><i style="background:var(--green)"></i>exacto</span>
+    <span><i style="background:var(--blue)"></i>dif. goles</span>
+    <span><i style="background:var(--yellow)"></i>ganador</span>
+    <span><i style="background:var(--gray)"></i>sin pts</span></div>`;
+  const note=`<div class="note">Cada polla puntúa distinto · toca "Posiciones" para tu ranking.<br>El color del marcador = puntos que ganaste con esa predicción.</div>`;
+  document.getElementById('viewPart').innerHTML=nav+sum+body+legend+note;
+}
+function chgDay(d){ curDay=Math.max(0,Math.min(days.length-1,curDay+d)); renderPart(); }
+
+load().catch(e=>{document.querySelector('main').innerHTML='<div class="empty">Error cargando datos.<br>'+e+'</div>';});
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').catch(()=>{}); }
+</script>
+</body>
+</html>

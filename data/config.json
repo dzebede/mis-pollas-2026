@@ -1,0 +1,59 @@
+{
+  "pollas": [
+    {
+      "id": "pollapato",
+      "col": "Colombia",
+      "name": "PollaPato",
+      "account": "ElGanado",
+      "flag": "🇨🇴",
+      "color": "#d62828",
+      "url": "https://pollapato.com/dashboard",
+      "rules": "1 pt por marcador exacto (72 partidos) · 1 pt por 1º y 2º exactos de cada grupo · podio: campeón 16 / subcampeón 12 / 3º 8 / 4º 4. Acertar solo el ganador NO da puntos.",
+      "exactOnly": true
+    },
+    {
+      "id": "polla26",
+      "col": "Panamá",
+      "name": "Polla26",
+      "account": "Belfort",
+      "flag": "🇵🇦",
+      "color": "#0353a4",
+      "url": "https://polla26.com/dashboard",
+      "rules": "Marcador exacto = 3 pts · acertar ganador/empate con otro marcador = 1 pt · resto 0.",
+      "exactOnly": false
+    },
+    {
+      "id": "triplea",
+      "col": "AAA1",
+      "name": "PollaTripleA",
+      "account": "dzebede",
+      "flag": "🅰️",
+      "color": "#2a9d8f",
+      "url": "https://pollatriplea.com/tabla",
+      "rules": "Marcador exacto = 3 pts · resultado correcto (ganador) = 1 pt · incorrecto 0. Solo fase de grupos.",
+      "exactOnly": false
+    },
+    {
+      "id": "triplea2",
+      "col": "AAA2",
+      "name": "PollaTripleA",
+      "account": "dzebede (2)",
+      "flag": "🅰️",
+      "color": "#e9c46a",
+      "url": "https://pollatriplea.com/tabla",
+      "rules": "Marcador exacto = 3 pts · resultado correcto (ganador) = 1 pt · incorrecto 0. Solo fase de grupos.",
+      "exactOnly": false
+    },
+    {
+      "id": "kicktipp",
+      "col": "Claude",
+      "name": "Kicktipp",
+      "account": "Belfort",
+      "flag": "⚽",
+      "color": "#bc4749",
+      "url": "https://www.kicktipp.es/mundial-masters-birriosos-2026/ranking",
+      "rules": "Tendencia/ganador = 2 pts · diferencia de goles correcta = 3 pts · marcador exacto = 4 pts.",
+      "exactOnly": false
+    }
+  ]
+}

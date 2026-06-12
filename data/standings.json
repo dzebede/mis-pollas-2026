@@ -1,0 +1,52 @@
+{
+  "updated": "2026-06-12T15:49:26-05:00",
+  "source": "scraper",
+  "status": {
+    "kicktipp": "ok",
+    "polla26": "ok",
+    "triplea": "ok",
+    "pollapato": "ok"
+  },
+  "pollas": {
+    "pollapato": {
+      "myPoints": 1,
+      "myRank": 69,
+      "leaderPoints": 3,
+      "leaderName": "Divas",
+      "participants": 350,
+      "ok": true
+    },
+    "polla26": {
+      "myPoints": 3,
+      "myRank": null,
+      "leaderPoints": 6,
+      "leaderName": "MoIke",
+      "participants": 382,
+      "ok": true
+    },
+    "triplea": {
+      "myPoints": 4,
+      "myRank": 93,
+      "leaderPoints": 6,
+      "leaderName": "MARMAT4 - CG3",
+      "participants": 1666,
+      "ok": true
+    },
+    "triplea2": {
+      "myPoints": 1,
+      "myRank": 1040,
+      "leaderPoints": 6,
+      "leaderName": "MARMAT4 - CG3",
+      "participants": 1666,
+      "ok": true
+    },
+    "kicktipp": {
+      "myPoints": 4,
+      "myRank": 18,
+      "leaderPoints": 11,
+      "leaderName": "Tostao_1970",
+      "participants": null,
+      "ok": true
+    }
+  }
+}

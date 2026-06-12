@@ -28,7 +28,17 @@
   .seg button{flex:1;background:var(--card);color:var(--mut);border:1px solid var(--line);
     padding:9px 4px;border-radius:11px;font-size:13px;font-weight:700;white-space:nowrap}
   .seg button.on{background:var(--accent);color:#1a1300;border-color:var(--accent)}
-  main{padding:14px;max-width:560px;margin:0 auto}
+  main{padding:14px;max-width:1120px;margin:0 auto}
+  .sec{font-size:16px;font-weight:800;margin:20px 4px 11px;letter-spacing:.2px}
+  .sec:first-child{margin-top:4px}
+  .posgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+  .daysgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px;align-items:start}
+  .dayblock{min-width:0}
+  .dayhdr{display:flex;justify-content:space-between;align-items:baseline;gap:8px;
+    padding:0 2px 9px;border-bottom:1px solid var(--line);margin-bottom:11px}
+  .dayhdr b{font-size:15px} .dayhdr small{color:var(--mut);font-size:12px;white-space:nowrap}
+  .dbadge{background:var(--accent);color:#1a1300;font-size:11px;font-weight:800;
+    padding:1px 7px;border-radius:20px;vertical-align:1px}
   /* ---- standings ---- */
   .pcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px;
     border-left:5px solid var(--c)}
@@ -53,7 +63,8 @@
   .rbtn{background:none;border:none;color:var(--blue);font-size:12px;font-weight:700;padding:0;margin-top:9px}
   /* ---- day nav ---- */
   .daynav{display:flex;align-items:center;justify-content:space-between;background:var(--card);
-    border:1px solid var(--line);border-radius:14px;padding:8px 6px;margin-bottom:14px;position:sticky;top:118px;z-index:5}
+    border:1px solid var(--line);border-radius:14px;padding:8px 6px;margin-bottom:14px;max-width:420px}
+  .daynav .lbl small{display:block;font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
   .daynav button{background:var(--card2);border:1px solid var(--line);color:var(--txt);width:42px;height:42px;
     border-radius:11px;font-size:20px;font-weight:800}
   .daynav .lbl{text-align:center;flex:1}
@@ -116,20 +127,18 @@
     <div class="upd" id="upd"></div>
   </div>
   <div class="seg">
-    <button id="segPart" class="on" onclick="setView('part')">⚽ Partidos</button>
-    <button id="segPos" onclick="setView('pos')">🏆 Posiciones</button>
+    <button id="segResumen" class="on" onclick="setView('resumen')">📊 Posiciones y Partidos</button>
     <button id="segTabla" onclick="setView('tabla')">📋 Tabla</button>
   </div>
 </header>
 <main>
-  <div id="viewPart"></div>
-  <div id="viewPos" style="display:none"></div>
+  <div id="viewResumen"></div>
   <div id="viewTabla" style="display:none"></div>
 </main>
 
 <script>
 const TZ_OFFSET = -5; // Panamá UTC-5
-let CONFIG, MATCHES, STAND, byId={}, days=[], curDay=0, view='part';
+let CONFIG, MATCHES, STAND, byId={}, days=[], curDay=0, view='resumen';
 
 function panamaDate(d=new Date()){
   const utc = d.getTime() + d.getTimezoneOffset()*60000;
@@ -137,6 +146,7 @@ function panamaDate(d=new Date()){
 }
 function ymd(d){ return d.toISOString().slice(0,10); }
 const TODAY = ymd(panamaDate());
+const TOMORROW = ymd(new Date(panamaDate().getTime()+86400000));
 
 function tend(s){ return s[0]>s[1]?1 : s[0]<s[1]?-1:0; }
 function scorePred(pid, pred, res){
@@ -174,27 +184,25 @@ async function load(){
   if(curDay<0){ curDay = days.findIndex(d=>d>=TODAY); if(curDay<0) curDay=days.length-1; }
   const u=new Date(STAND.updated);
   document.getElementById('upd').innerHTML='actualizado<br>'+u.toLocaleString('es',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
-  renderPos(); renderPart(); renderTabla();
+  renderResumen(); renderTabla();
 }
 
 function setView(v){
   view=v;
-  for(const [name,id] of [['part','Part'],['pos','Pos'],['tabla','Tabla']]){
+  for(const [name,id] of [['resumen','Resumen'],['tabla','Tabla']]){
     document.getElementById('view'+id).style.display = v===name?'block':'none';
     document.getElementById('seg'+id).className = v===name?'on':'';
   }
 }
 
-function renderPos(){
-  let h='';
-  CONFIG.pollas.forEach(p=>{
-    const s=STAND.pollas[p.id]||{};
-    const me = s.myPoints==null?'—':s.myPoints;
-    const lead = s.leaderPoints==null?'—':s.leaderPoints;
-    const gap = (s.myPoints!=null&&s.leaderPoints!=null)?(s.leaderPoints-s.myPoints):null;
-    const rank = s.myRank?('#'+s.myRank):'—';
-    const parts = s.participants?(' de '+s.participants):'';
-    h+=`<div class="pcard" style="--c:${p.color}">
+function posCard(p){
+  const s=STAND.pollas[p.id]||{};
+  const me = s.myPoints==null?'—':s.myPoints;
+  const lead = s.leaderPoints==null?'—':s.leaderPoints;
+  const gap = (s.myPoints!=null&&s.leaderPoints!=null)?(s.leaderPoints-s.myPoints):null;
+  const rank = s.myRank?('#'+s.myRank):'—';
+  const parts = s.participants?(' de '+s.participants):'';
+  return `<div class="pcard" style="--c:${p.color}">
       <div class="row1">
         <div class="nm"><span class="fl">${p.flag}</span><div>
           <b>${p.name}</b><small>${p.account} · col. "${p.col}"</small></div></div>
@@ -205,69 +213,68 @@ function renderPos(){
         <div class="stat lead"><div class="v">${lead}</div><div class="l">Líder${s.leaderName?(' · '+s.leaderName):''}</div></div>
         <div class="stat"><div class="v">${gap==null?'—':(gap===0?'🥇':'-'+gap)}</div><div class="l">${gap===0?'puntero':'a líder'}</div></div>
       </div>
-      <div class="gap"><span>Reglas distintas en este site</span><a href="${p.url}" target="_blank">abrir site ↗</a></div>
+      <div class="gap"><span>Reglas distintas</span><a href="${p.url}" target="_blank">abrir site ↗</a></div>
       <button class="rbtn" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'ocultar reglas':'ver reglas ▾'">ver reglas ▾</button>
       <div class="rules">${p.rules}</div>
     </div>`;
-  });
-  document.getElementById('viewPos').innerHTML=h;
 }
 
-function renderPart(){
-  const ds=days[curDay];
-  const dayMatches=MATCHES.matches.filter(m=>m.date===ds);
-  // resumen de puntos del día (si hay resultados)
-  let dayPts={}, anyRes=false;
-  CONFIG.pollas.forEach(p=>dayPts[p.id]=0);
-  dayMatches.forEach(m=>{ if(m.result){anyRes=true; CONFIG.pollas.forEach(p=>{
-    const r=scorePred(p.id,m.predictions[p.id],m.result); if(r)dayPts[p.id]+=r.pts; });}});
-
-  let nav=`<div class="daynav">
-    <button onclick="chgDay(-1)" ${curDay<=0?'disabled style=opacity:.3':''}>‹</button>
-    <div class="lbl"><b class="${ds===TODAY?'today':''}">${ds===TODAY?'HOY · ':''}${prettyDay(ds)}</b>
-      <small>${dayMatches.length} partido${dayMatches.length!=1?'s':''}</small></div>
-    <button onclick="chgDay(1)" ${curDay>=days.length-1?'disabled style=opacity:.3':''}>›</button>
-  </div>`;
-
-  let sum='';
-  if(anyRes){
-    sum='<div class="daysum">Puntos del día: '+CONFIG.pollas.map(p=>`${p.flag}<b>${dayPts[p.id]}</b>`).join(' &nbsp; ')+'</div>';
-  }
-
-  let body='';
-  if(!dayMatches.length){ body='<div class="empty">No hay partidos este día.</div>'; }
-  dayMatches.forEach(m=>{
-    const res = m.result ? `${m.result[0]} - ${m.result[1]}` : '— : —';
-    const live = m.result?'<span class="m-live">● FINAL/EN VIVO</span>':'';
-    let preds='';
-    CONFIG.pollas.forEach(p=>{
-      const pr=m.predictions[p.id];
-      const txt = pr?`${pr[0]} - ${pr[1]}`:'—';
-      const r = scorePred(p.id,pr,m.result);
-      const lvl = r? r.lvl : '';
-      const badge = (r&&m.result)?`<span class="pts-badge">+${r.pts}</span>`:'';
-      preds+=`<div class="pred" style="--c:${p.color}">
+function buildMatch(m){
+  const res = m.result ? `${m.result[0]} - ${m.result[1]}` : '— : —';
+  const live = m.result?'<span class="m-live">● FINAL/EN VIVO</span>':'';
+  let preds='';
+  CONFIG.pollas.forEach(p=>{
+    const pr=m.predictions[p.id];
+    const txt = pr?`${pr[0]} - ${pr[1]}`:'—';
+    const r = scorePred(p.id,pr,m.result);
+    const lvl = r? r.lvl : '';
+    const badge = (r&&m.result)?`<span class="pts-badge">+${r.pts}</span>`:'';
+    preds+=`<div class="pred" style="--c:${p.color}">
         <div class="pl"><b>${p.flag} ${p.col}</b><small>${p.name}</small></div>
         <div class="sc ${m.result?lvl:''}">${txt}${badge}</div></div>`;
-    });
-    body+=`<div class="match">
+  });
+  return `<div class="match">
       <div class="m-top"><span class="m-grp">Grupo ${m.group}</span><span>${m.time} · P${m.n} ${live}</span></div>
       <div class="m-teams"><div class="tm">${m.home}</div>
         <div class="res ${m.result?'':'pending'}">${res}</div>
         <div class="tm away">${m.away}</div></div>
       <div class="preds">${preds}</div>
     </div>`;
-  });
+}
 
+function dayBlock(ds){
+  const dm=MATCHES.matches.filter(m=>m.date===ds);
+  let dayPts={}, anyRes=false;
+  CONFIG.pollas.forEach(p=>dayPts[p.id]=0);
+  dm.forEach(m=>{ if(m.result){anyRes=true; CONFIG.pollas.forEach(p=>{
+    const r=scorePred(p.id,m.predictions[p.id],m.result); if(r)dayPts[p.id]+=r.pts; });}});
+  const badge = ds===TODAY?'HOY':ds===TOMORROW?'MAÑANA':'';
+  const head=`<div class="dayhdr"><b>${badge?`<span class="dbadge">${badge}</span> `:''}${prettyDay(ds)}</b>
+    <small>${dm.length} partido${dm.length!=1?'s':''}</small></div>`;
+  const sum = anyRes ? '<div class="daysum">Puntos del día: '+CONFIG.pollas.map(p=>`${p.flag}<b>${dayPts[p.id]}</b>`).join(' &nbsp; ')+'</div>' : '';
+  const body = dm.length ? dm.map(buildMatch).join('') : '<div class="empty">Sin partidos este día.</div>';
+  return `<div class="dayblock">${head}${sum}${body}</div>`;
+}
+
+function renderResumen(){
+  const pos='<div class="sec">🏆 Posiciones</div><div class="posgrid">'+
+    CONFIG.pollas.map(posCard).join('')+'</div>';
+  const d0=days[curDay], d1=days[curDay+1];
+  const nav=`<div class="daynav">
+    <button onclick="chgDay(-1)" ${curDay<=0?'disabled style=opacity:.3':''}>‹</button>
+    <div class="lbl"><small>desliza días</small><b>${prettyDay(d0)}${d1?(' · '+prettyDay(d1)):''}</b></div>
+    <button onclick="chgDay(1)" ${curDay>=days.length-1?'disabled style=opacity:.3':''}>›</button>
+  </div>`;
+  const blocks='<div class="daysgrid">'+dayBlock(d0)+(d1?dayBlock(d1):'')+'</div>';
   const legend=`<div class="legend">
     <span><i style="background:var(--green)"></i>exacto</span>
     <span><i style="background:var(--blue)"></i>dif. goles</span>
     <span><i style="background:var(--yellow)"></i>ganador</span>
     <span><i style="background:var(--gray)"></i>sin pts</span></div>`;
-  const note=`<div class="note">Cada polla puntúa distinto · toca "Posiciones" para tu ranking.<br>El color del marcador = puntos que ganaste con esa predicción.</div>`;
-  document.getElementById('viewPart').innerHTML=nav+sum+body+legend+note;
+  document.getElementById('viewResumen').innerHTML =
+    pos + '<div class="sec">⚽ Partidos</div>' + nav + blocks + legend;
 }
-function chgDay(d){ curDay=Math.max(0,Math.min(days.length-1,curDay+d)); renderPart(); }
+function chgDay(d){ curDay=Math.max(0,Math.min(days.length-1,curDay+d)); renderResumen(); }
 
 function renderTabla(){
   const P=CONFIG.pollas;

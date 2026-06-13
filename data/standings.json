@@ -1,17 +1,17 @@
 {
-  "updated": "2026-06-13T10:22:09-05:00",
+  "updated": "2026-06-13T16:55:30-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (0 aplicados)"
+    "resultados": "ok (1 aplicados)"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 1,
-      "myRank": 69,
+      "myRank": 71,
       "leaderPoints": 3,
       "leaderName": "Divas",
       "participants": 350,
@@ -20,32 +20,32 @@
     "polla26": {
       "myPoints": 4,
       "myRank": null,
-      "leaderPoints": 10,
-      "leaderName": "HAM",
+      "leaderPoints": 11,
+      "leaderName": "RafaelN",
       "participants": 382,
       "ok": true
     },
     "triplea": {
       "myPoints": 5,
-      "myRank": 207,
-      "leaderPoints": 10,
-      "leaderName": "eliburstein (2)",
+      "myRank": 260,
+      "leaderPoints": 11,
+      "leaderName": "EBB-SALUD",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
       "myPoints": 1,
-      "myRank": 1460,
-      "leaderPoints": 10,
-      "leaderName": "eliburstein (2)",
+      "myRank": 1485,
+      "leaderPoints": 11,
+      "leaderName": "EBB-SALUD",
       "participants": 1666,
       "ok": true
     },
     "kicktipp": {
       "myPoints": 6,
-      "myRank": 17,
-      "leaderPoints": 11,
-      "leaderName": "Tostao_1970",
+      "myRank": 18,
+      "leaderPoints": 13,
+      "leaderName": "Fritoconqueso",
       "participants": null,
       "ok": true
     }

@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-12T16:20:42-05:00",
+  "updated": "2026-06-13T03:40:47-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (0 aplicados)"
+    "resultados": "ok (1 aplicados)"
   },
   "pollas": {
     "pollapato": {
@@ -18,32 +18,32 @@
       "ok": true
     },
     "polla26": {
-      "myPoints": 3,
+      "myPoints": 4,
       "myRank": null,
-      "leaderPoints": 9,
+      "leaderPoints": 10,
       "leaderName": "HAM",
       "participants": 382,
       "ok": true
     },
     "triplea": {
-      "myPoints": 4,
-      "myRank": 214,
-      "leaderPoints": 9,
-      "leaderName": "globaljak",
+      "myPoints": 5,
+      "myRank": 207,
+      "leaderPoints": 10,
+      "leaderName": "eliburstein (2)",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
       "myPoints": 1,
-      "myRank": 1191,
-      "leaderPoints": 9,
-      "leaderName": "globaljak",
+      "myRank": 1460,
+      "leaderPoints": 10,
+      "leaderName": "eliburstein (2)",
       "participants": 1666,
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 4,
-      "myRank": 18,
+      "myPoints": 6,
+      "myRank": 17,
       "leaderPoints": 11,
       "leaderName": "Tostao_1970",
       "participants": null,

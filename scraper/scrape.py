@@ -137,30 +137,28 @@ def scrape_polla26():
             pg.goto("https://polla26.com/login", wait_until="domcontentloaded", timeout=45000)
             _fill_login(pg, email, pw)
             pg.wait_for_timeout(5000)
-            pg.goto("https://polla26.com/pools", wait_until="domcontentloaded", timeout=45000)
-            pg.wait_for_timeout(4000)
-            # La tarjeta "PUNTAJE/POSICIÓN" está en el tab "Resumen": clicarlo si existe.
-            clicked = None
-            for sel in ['[role=tab]:has-text("Resumen")', 'button:has-text("Resumen")',
-                        'a:has-text("Resumen")', 'text="Resumen"']:
-                try:
-                    if pg.locator(sel).count():
-                        pg.locator(sel).first.click(); pg.wait_for_timeout(2500)
-                        clicked = sel; break
-                except Exception:
-                    pass
-            pt = re.sub(r'\s+', ' ', pg.inner_text("body"))
-            cur = pg.url
-            tabs = pg.eval_on_selector_all(
-                'a,button,[role=tab]',
-                "els=>Array.from(new Set(els.map(e=>(e.textContent||'').trim()).filter(t=>t&&t.length<20))).slice(0,25)")
+            def try_click(sels):
+                for s in sels:
+                    try:
+                        if pg.locator(s).count():
+                            pg.locator(s).first.click(); pg.wait_for_timeout(3000); return s
+                    except Exception:
+                        pass
+                return None
+            # Ruta a la tarjeta de posición: "Mis Pollas" -> entrar a la polla ("Ver")
+            c1 = try_click(['a:has-text("Mis Pollas")', 'text="Mis Pollas"'])
+            url1 = pg.url; t1 = re.sub(r'\s+', ' ', pg.inner_text("body"))
+            c2 = try_click(['a:has-text("Ver")', 'button:has-text("Ver")', 'text="Ver"'])
+            url2 = pg.url; t2 = re.sub(r'\s+', ' ', pg.inner_text("body"))
             b.close()
         # --- diagnóstico temporal ---
-        log("polla26 /pools URL:", cur, "| clic Resumen:", clicked, "| len:", len(pt))
-        log("polla26 /pools tabs/botones:", tabs)
-        ip = pt.upper().find("POSICI")
-        log("polla26 /pools cerca POSICI:", pt[max(0,ip-25):ip+90] if ip >= 0 else "(NO aparece 'POSICI')")
+        log("p26 MisPollas clic:", c1, "| url:", url1, "| POSICI?", "POSICI" in t1.upper())
+        log("p26 Ver clic:", c2, "| url:", url2, "| POSICI?", "POSICI" in t2.upper())
+        iu = t2.upper().find("POSICI")
+        log("p26 detalle cerca POSICI:", t2[max(0, iu-25):iu+90] if iu >= 0 else "(no en detalle) inicio:" + t2[:160])
         # --- fin diagnóstico ---
+        pt = t2 if "POSICI" in t2.upper() else (t1 if "POSICI" in t1.upper() else t2)
+        cur = url2
         # si hay varias pollas, anclar el bloque cerca de "Belfort"; si no, todo el texto
         bi = pt.find("Belfort")
         seg = pt[bi:bi+700] if bi >= 0 else pt

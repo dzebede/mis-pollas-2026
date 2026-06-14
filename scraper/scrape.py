@@ -204,8 +204,12 @@ def scrape_triplea():
         b = p.chromium.launch(headless=True)
         ctx = b.new_context(user_agent="Mozilla/5.0")
         page = ctx.new_page()
+        seen = []
         def on_req(req):
-            if "v_leaderboard" in req.url and "apikey" not in hdrs:
+            u = req.url
+            if "/rest/v1/" in u:
+                seen.append(u.split("/rest/v1/", 1)[1][:140])
+            if "/rest/v1/" in u and "apikey" not in hdrs:
                 h = req.headers
                 for k in ("apikey", "authorization"):
                     if k in h: hdrs[k] = h[k]
@@ -218,6 +222,16 @@ def scrape_triplea():
         b.close()
     if "apikey" not in hdrs:
         raise RuntimeError("triplea: no se capturaron cabeceras de sesión")
+    # --- DEBUG temporal: descubrir tablas/vistas y endpoints ---
+    log("triplea endpoints vistos:", sorted(set(seen))[:40])
+    try:
+        rr = urllib.request.Request("https://knvsrupdwokzgceacpro.supabase.co/rest/v1/",
+                                    headers={**hdrs, "User-Agent": "Mozilla/5.0"})
+        spec = json.load(urllib.request.urlopen(rr, timeout=30))
+        log("triplea TABLAS:", sorted((spec.get("definitions") or {}).keys()))
+    except Exception as e:
+        log("triplea REST root:", e)
+    # --- fin DEBUG ---
     # paginar leaderboard completo
     rows, off = [], 0
     while True:

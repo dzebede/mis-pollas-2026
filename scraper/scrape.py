@@ -123,10 +123,23 @@ def scrape_polla26():
     mine = re.search(r'Belfort\s+\S+\s+(\d+)\s+Ver', reg) or re.search(r'Belfort[^\d]{0,20}(\d+)', reg)
     myPts = int(mine.group(1)) if mine else None
     parts = re.search(r'PARTICIPANTES\s*(\d+)', txt)
+    # Tab "Resumen": "PUNTAJE 10 · POSICIÓN #13 de 478 · 5 Detrás del líder".
+    # De ahí salen posición, total real de participantes de la polla y, si falta,
+    # puntaje y puntos del líder (= míos + diferencia).
+    mrank = re.search(r'POSICI[ÓO]N\s*#?\s*(\d+)\s*de\s*([\d.,]+)', txt, re.I)
+    myRank = int(mrank.group(1)) if mrank else None
+    rankParts = int(re.sub(r'\D', '', mrank.group(2))) if mrank else None
+    if myPts is None:
+        mp2 = re.search(r'PUNTAJE\s*(\d+)', txt, re.I)
+        myPts = int(mp2.group(1)) if mp2 else None
+    if leaderPts is None:
+        mgap = re.search(r'(\d+)\s*Detr[aá]s del l[ií]der', txt, re.I)
+        if mgap and myPts is not None: leaderPts = myPts + int(mgap.group(1))
     if myPts is None: raise RuntimeError("polla26: no se halló puntaje de Belfort")
-    return {"polla26": {"myPoints": myPts, "myRank": None, "leaderPoints": leaderPts,
+    return {"polla26": {"myPoints": myPts, "myRank": myRank, "leaderPoints": leaderPts,
                          "leaderName": leaderName,
-                         "participants": int(parts.group(1)) if parts else None, "ok": True}}
+                         "participants": rankParts or (int(parts.group(1)) if parts else None),
+                         "ok": True}}
 
 # ----------------------------------------------------------------------------
 # Playwright helpers (PollaTripleA y PollaPato)

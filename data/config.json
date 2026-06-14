@@ -2,7 +2,7 @@
   "pollas": [
     {
       "id": "pollapato",
-      "col": "Colombia",
+      "col": "PollaPato",
       "name": "PollaPato",
       "account": "ElGanado",
       "flag": "🇨🇴",
@@ -13,7 +13,7 @@
     },
     {
       "id": "polla26",
-      "col": "Panamá",
+      "col": "Polla26",
       "name": "Polla26",
       "account": "Belfort",
       "flag": "🇵🇦",
@@ -46,7 +46,7 @@
     },
     {
       "id": "kicktipp",
-      "col": "Claude",
+      "col": "Piazza",
       "name": "Kicktipp",
       "account": "Belfort",
       "flag": "⚽",

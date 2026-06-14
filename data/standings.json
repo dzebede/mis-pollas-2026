@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-13T23:02:02-05:00",
+  "updated": "2026-06-13T23:05:29-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (1 aplicados)"
+    "resultados": "ok (0 aplicados)"
   },
   "pollas": {
     "pollapato": {

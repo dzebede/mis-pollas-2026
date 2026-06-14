@@ -1,0 +1,45 @@
+name: Refrescar marcadores (rápido)
+
+# Solo resultados de partidos + ranking Kicktipp (ambos públicos, sin navegador).
+# Corre en segundos, así que puede ir cada 5 min y el marcador aparece casi en vivo.
+
+on:
+  schedule:
+    # Ventana de partidos ~19:00-07:00 UTC (14:00-02:00 Panamá). Cada 5 min.
+    - cron: "*/5 19-23,0-6 * * *"
+  workflow_dispatch: {}   # botón "Run workflow" manual
+
+permissions:
+  contents: write
+
+concurrency:
+  # Mismo grupo que el workflow completo: nunca hacen push a la vez.
+  group: pollas-commit
+  cancel-in-progress: false
+
+jobs:
+  fast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Sin pip install: el modo rápido usa solo la librería estándar de Python.
+      - name: Ejecutar scraper (solo marcadores)
+        run: python scraper/scrape.py --results-only
+
+      - name: Commitear marcadores si cambió
+        run: |
+          git config user.name "pollas-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/standings.json data/matches.json
+          if git diff --staged --quiet; then
+            echo "Sin cambios."
+          else
+            git commit -m "refresh marcadores $(date -u +%FT%TZ)"
+            git pull --rebase origin main || true
+            git push
+          fi

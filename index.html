@@ -151,8 +151,11 @@ const TZ_OFFSET = -5; // Panamá UTC-5
 let CONFIG, MATCHES, STAND, byId={}, days=[], curDay=0, view='resumen';
 
 function panamaDate(d=new Date()){
-  const utc = d.getTime() + d.getTimezoneOffset()*60000;
-  return new Date(utc + TZ_OFFSET*3600000);
+  // Desplaza el instante real a la hora de pared de Panamá (UTC-5); luego ymd()
+  // lee los campos UTC con toISOString(). NO usar getTimezoneOffset(): hacía que
+  // el día dependiera de la zona del equipo y, en hora Panamá, adelantaba al
+  // día siguiente por la tarde-noche (bug "me muestra los partidos de mañana").
+  return new Date(d.getTime() + TZ_OFFSET*3600000);
 }
 function ymd(d){ return d.toISOString().slice(0,10); }
 const TODAY = ymd(panamaDate());

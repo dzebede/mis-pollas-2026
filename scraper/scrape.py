@@ -252,7 +252,14 @@ def scrape_pollapato():
 # ----------------------------------------------------------------------------
 # MAIN
 # ----------------------------------------------------------------------------
-def main():
+def main(results_only=False):
+    """
+    Modo completo (default): scrapea las 5 pollas (incluye Playwright) + resultados.
+    Modo rápido (results_only=True): SOLO resultados de partidos + ranking Kicktipp.
+      Ambos usan únicamente la librería estándar (sin navegador), así que corre en
+      segundos. Pensado para el cron de 5 min durante los partidos: el marcador
+      aparece casi en vivo sin disparar el navegador headless.
+    """
     # cargar último standings (para conservar valores si algo falla)
     try:
         prev = json.load(open(OUT, encoding="utf-8"))
@@ -260,9 +267,14 @@ def main():
         prev = {"pollas": {}}
     result = dict(prev.get("pollas", {}))
 
-    jobs = [("kicktipp", scrape_kicktipp), ("polla26", scrape_polla26),
-            ("triplea", scrape_triplea), ("pollapato", scrape_pollapato)]
-    status = {}
+    # En modo rápido sólo corre Kicktipp (público, urllib). Los demás sites
+    # necesitan navegador y se conservan tal cual del último run completo.
+    jobs = [("kicktipp", scrape_kicktipp)]
+    if not results_only:
+        jobs += [("polla26", scrape_polla26),
+                 ("triplea", scrape_triplea), ("pollapato", scrape_pollapato)]
+    # en modo rápido arrancamos del status previo para no borrar el de los sites pesados
+    status = dict(prev.get("status", {})) if results_only else {}
     for label, fn in jobs:
         try:
             upd = fn()
@@ -280,19 +292,27 @@ def main():
             log(label, "FALLO:", e)
 
     # resultados reales de los partidos (actualiza data/matches.json)
+    applied = 0
     try:
-        n = scrape_results()
-        status["resultados"] = f"ok ({n} aplicados)"
-        log("resultados OK:", n, "aplicados")
+        applied = scrape_results()
+        status["resultados"] = f"ok ({applied} aplicados)"
+        log("resultados OK:", applied, "aplicados")
     except Exception as e:
         status["resultados"] = f"FALLO: {e}"
         log("resultados FALLO:", e)
 
-    out = {"updated": datetime.now(PANAMA).isoformat(timespec="seconds"),
-           "source": "scraper", "status": status, "pollas": result}
+    # En modo rápido, si no cambió nada material, conservar el timestamp previo
+    # para que standings.json quede idéntico y el cron de 5 min no haga commits vacíos.
+    changed = (result != prev.get("pollas", {})) or applied > 0
+    if results_only and not changed:
+        updated = prev.get("updated") or datetime.now(PANAMA).isoformat(timespec="seconds")
+    else:
+        updated = datetime.now(PANAMA).isoformat(timespec="seconds")
+
+    out = {"updated": updated, "source": "scraper", "status": status, "pollas": result}
     json.dump(out, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-    log("escrito", OUT)
+    log("escrito", OUT, "(rápido)" if results_only else "(completo)")
     log("status:", json.dumps(status, ensure_ascii=False))
 
 if __name__ == "__main__":
-    main()
+    main(results_only="--results-only" in sys.argv)

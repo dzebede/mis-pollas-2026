@@ -1,16 +1,18 @@
-name: Refrescar standings de las pollas
+name: Refrescar standings (completo)
 
 on:
   schedule:
-    # cada 3 horas (UTC). Ajusta a gusto. Mundial: partidos ~17:00-04:00 UTC.
-    - cron: "0 */3 * * *"
+    # Horario en UTC. Ventana de partidos ~19:00-07:00 UTC (14:00-02:00 Panamá).
+    - cron: "*/15 19-23,0-6 * * *"   # standings de las 5 pollas: cada 15 min en partidos
+    - cron: "0 7-18/3 * * *"         # fuera de partidos: cada 3 h
   workflow_dispatch: {}   # botón "Run workflow" manual
 
 permissions:
   contents: write   # para commitear data/standings.json
 
 concurrency:
-  group: refresh
+  # Grupo compartido con el workflow rápido para que NUNCA hagan push a la vez.
+  group: pollas-commit
   cancel-in-progress: false
 
 jobs:
@@ -29,7 +31,7 @@ jobs:
           pip install playwright
           python -m playwright install --with-deps chromium
 
-      - name: Ejecutar scraper
+      - name: Ejecutar scraper (completo)
         env:
           P26_EMAIL: ${{ secrets.P26_EMAIL }}
           P26_PASS: ${{ secrets.P26_PASS }}
@@ -48,5 +50,6 @@ jobs:
             echo "Sin cambios."
           else
             git commit -m "refresh standings $(date -u +%FT%TZ)"
+            git pull --rebase origin main || true
             git push
           fi

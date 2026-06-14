@@ -140,7 +140,15 @@ def scrape_polla26():
             pg.goto("https://polla26.com/pools", wait_until="domcontentloaded", timeout=45000)
             pg.wait_for_timeout(4000)
             pt = re.sub(r'\s+', ' ', pg.inner_text("body"))
+            cur = pg.url
             b.close()
+        # --- diagnóstico temporal ---
+        log("polla26 /pools URL final:", cur, "| len texto:", len(pt))
+        ip = pt.upper().find("POSICI")
+        log("polla26 /pools cerca POSICI:", pt[max(0,ip-25):ip+90] if ip >= 0 else "(NO aparece 'POSICI')")
+        ij = pt.upper().find("PUNTAJE")
+        log("polla26 /pools cerca PUNTAJE:", pt[max(0,ij-10):ij+70] if ij >= 0 else "(NO aparece 'PUNTAJE')")
+        # --- fin diagnóstico ---
         # si hay varias pollas, anclar el bloque cerca de "Belfort"; si no, todo el texto
         bi = pt.find("Belfort")
         seg = pt[bi:bi+700] if bi >= 0 else pt

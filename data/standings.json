@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-14T08:18:31-05:00",
+  "updated": "2026-06-14T15:49:53-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (0 aplicados)",
+    "resultados": "ok (2 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {
@@ -19,41 +19,41 @@
       "ok": true
     },
     "polla26": {
-      "myPoints": 10,
+      "myPoints": 11,
       "myRank": 14,
-      "leaderPoints": 15,
+      "leaderPoints": 16,
       "leaderName": "RafaelN",
       "participants": 478,
       "ok": true
     },
     "triplea": {
-      "myPoints": 6,
-      "myRank": 481,
-      "leaderPoints": 14,
+      "myPoints": 7,
+      "myRank": 478,
+      "leaderPoints": 15,
       "leaderName": "Moi2",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
-      "myPoints": 7,
-      "myRank": 311,
-      "leaderPoints": 14,
+      "myPoints": 8,
+      "myRank": 309,
+      "leaderPoints": 15,
       "leaderName": "Moi2",
       "participants": 1666,
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 8,
-      "myRank": 19,
-      "leaderPoints": 20,
+      "myPoints": 12,
+      "myRank": 15,
+      "leaderPoints": 22,
       "leaderName": "Fritoconqueso",
       "participants": null,
       "ok": true
     },
     "triplea3": {
-      "myPoints": 7,
-      "myRank": 311,
-      "leaderPoints": 14,
+      "myPoints": 8,
+      "myRank": 309,
+      "leaderPoints": 15,
       "leaderName": "Moi2",
       "participants": 1666,
       "ok": true

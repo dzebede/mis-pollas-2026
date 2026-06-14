@@ -124,9 +124,10 @@ def scrape_polla26():
     myPts = int(mine.group(1)) if mine else None
     parts = re.search(r'PARTICIPANTES\s*(\d+)', txt)
     if myPts is None: raise RuntimeError("polla26: no se halló puntaje de Belfort")
-    # La posición vive en la pestaña Pollas (/pools), que se pinta con JavaScript:
-    # urllib no la ve, así que se renderiza con navegador. Bloque esperado:
-    # "PUNTAJE 10 · POSICIÓN #13 de 478 · 5 Detrás del líder".
+    # La posición vive en la página de mi polla (ej. /pools/153), pintada con
+    # JavaScript: urllib no la ve, así que se renderiza con navegador. La URL se
+    # descubre desde /profile (primer enlace /pools/N), con respaldo a /pools/153.
+    # Bloque esperado: "PUNTAJE 10 · POSICIÓN #13 de 478 · 5 Detrás del líder".
     # Best-effort: si el navegador falla, se conservan puntos/líder del dashboard.
     myRank = rankParts = None
     try:
@@ -137,42 +138,25 @@ def scrape_polla26():
             pg.goto("https://polla26.com/login", wait_until="domcontentloaded", timeout=45000)
             _fill_login(pg, email, pw)
             pg.wait_for_timeout(5000)
-            def try_click(sels):
-                for s in sels:
-                    try:
-                        if pg.locator(s).count():
-                            pg.locator(s).first.click(); pg.wait_for_timeout(3000); return s
-                    except Exception:
-                        pass
-                return None
-            # Ruta a la tarjeta de posición: "Mis Pollas" -> entrar a la polla ("Ver")
-            c1 = try_click(['a:has-text("Mis Pollas")', 'text="Mis Pollas"'])
-            url1 = pg.url; t1 = re.sub(r'\s+', ' ', pg.inner_text("body"))
-            c2 = try_click(['a:has-text("Ver")', 'button:has-text("Ver")', 'text="Ver"'])
-            url2 = pg.url; t2 = re.sub(r'\s+', ' ', pg.inner_text("body"))
+            pg.goto("https://polla26.com/profile", wait_until="domcontentloaded", timeout=45000)
+            pg.wait_for_timeout(3000)
+            hrefs = pg.eval_on_selector_all('a[href*="/pools/"]', "els=>els.map(e=>e.getAttribute('href'))")
+            detail = next((h for h in hrefs if h and re.search(r'/pools/\d+', h)), "/pools/153")
+            if detail.startswith("/"): detail = "https://polla26.com" + detail
+            pg.goto(detail, wait_until="domcontentloaded", timeout=45000)
+            pg.wait_for_timeout(4000)
+            pt = re.sub(r'\s+', ' ', pg.inner_text("body"))
             b.close()
-        # --- diagnóstico temporal ---
-        log("p26 MisPollas clic:", c1, "| url:", url1, "| POSICI?", "POSICI" in t1.upper())
-        log("p26 Ver clic:", c2, "| url:", url2, "| POSICI?", "POSICI" in t2.upper())
-        iu = t2.upper().find("POSICI")
-        log("p26 detalle cerca POSICI:", t2[max(0, iu-25):iu+90] if iu >= 0 else "(no en detalle) inicio:" + t2[:160])
-        # --- fin diagnóstico ---
-        pt = t2 if "POSICI" in t2.upper() else (t1 if "POSICI" in t1.upper() else t2)
-        cur = url2
-        # si hay varias pollas, anclar el bloque cerca de "Belfort"; si no, todo el texto
-        bi = pt.find("Belfort")
-        seg = pt[bi:bi+700] if bi >= 0 else pt
-        def find(rx): return re.search(rx, seg, re.I) or re.search(rx, pt, re.I)
-        mrank = find(r'POSICI[ÓO]N\s*#?\s*(\d+)\s*de\s*([\d.,]+)')
+        mrank = re.search(r'POSICI[ÓO]N\s*#?\s*(\d+)\s*de\s*([\d.,]+)', pt, re.I)
         if mrank:
             myRank = int(mrank.group(1)); rankParts = int(re.sub(r'\D', '', mrank.group(2)))
-        mpts = find(r'PUNTAJE\s*(\d+)')
-        if mpts: myPts = int(mpts.group(1))          # fuente más limpia que el dashboard
+        mpts = re.search(r'PUNTAJE\s*(\d+)', pt, re.I)
+        if mpts: myPts = int(mpts.group(1))          # puntaje de la polla (fuente directa)
         if leaderPts is None:
-            mgap = find(r'(\d+)\s*Detr[aá]s del l[ií]der')
+            mgap = re.search(r'(\d+)\s*Detr[aá]s del l[ií]der', pt, re.I)
             if mgap and myPts is not None: leaderPts = myPts + int(mgap.group(1))
     except Exception as e:
-        log("polla26 /pools:", e)
+        log("polla26 detalle:", e)
     return {"polla26": {"myPoints": myPts, "myRank": myRank, "leaderPoints": leaderPts,
                          "leaderName": leaderName,
                          "participants": rankParts or (int(parts.group(1)) if parts else None),

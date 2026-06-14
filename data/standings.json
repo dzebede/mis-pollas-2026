@@ -1,43 +1,43 @@
 {
-  "updated": "2026-06-13T21:55:56-05:00",
+  "updated": "2026-06-13T22:10:21-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (2 aplicados)"
+    "resultados": "ok (0 aplicados)"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 1,
-      "myRank": 71,
-      "leaderPoints": 3,
-      "leaderName": "Divas",
+      "myRank": 112,
+      "leaderPoints": 4,
+      "leaderName": "Bela Boys 1",
       "participants": 350,
       "ok": true
     },
     "polla26": {
-      "myPoints": 4,
+      "myPoints": 10,
       "myRank": null,
-      "leaderPoints": 11,
+      "leaderPoints": 15,
       "leaderName": "RafaelN",
       "participants": 382,
       "ok": true
     },
     "triplea": {
       "myPoints": 5,
-      "myRank": 260,
-      "leaderPoints": 11,
-      "leaderName": "EBB-SALUD",
+      "myRank": 341,
+      "leaderPoints": 12,
+      "leaderName": "globaljak",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
-      "myPoints": 1,
-      "myRank": 1485,
-      "leaderPoints": 11,
-      "leaderName": "EBB-SALUD",
+      "myPoints": 4,
+      "myRank": 564,
+      "leaderPoints": 12,
+      "leaderName": "globaljak",
       "participants": 1666,
       "ok": true
     },

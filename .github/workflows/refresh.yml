@@ -37,6 +37,8 @@ jobs:
           P26_PASS: ${{ secrets.P26_PASS }}
           TRIPLEA_EMAIL: ${{ secrets.TRIPLEA_EMAIL }}
           TRIPLEA_PASS: ${{ secrets.TRIPLEA_PASS }}
+          TRIPLEA3_EMAIL: ${{ secrets.TRIPLEA3_EMAIL }}
+          TRIPLEA3_PASS: ${{ secrets.TRIPLEA3_PASS }}
           POLLAPATO_EMAIL: ${{ secrets.POLLAPATO_EMAIL }}
           POLLAPATO_PASS: ${{ secrets.POLLAPATO_PASS }}
         run: python scraper/scrape.py

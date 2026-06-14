@@ -1,18 +1,18 @@
 {
-  "updated": "2026-06-14T06:38:58-05:00",
+  "updated": "2026-06-14T06:40:56-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (1 aplicados)",
-    "triplea3_preds": "ok (72)"
+    "resultados": "ok (0 aplicados)",
+    "triplea3_preds": "ok (0)"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 1,
-      "myRank": 116,
+      "myRank": 113,
       "leaderPoints": 4,
       "leaderName": "Bela Boys 1",
       "participants": 350,
@@ -20,7 +20,7 @@
     },
     "polla26": {
       "myPoints": 10,
-      "myRank": 13,
+      "myRank": 14,
       "leaderPoints": 15,
       "leaderName": "RafaelN",
       "participants": 478,
@@ -28,17 +28,17 @@
     },
     "triplea": {
       "myPoints": 6,
-      "myRank": 438,
-      "leaderPoints": 13,
-      "leaderName": "eliburstein (2)",
+      "myRank": 481,
+      "leaderPoints": 14,
+      "leaderName": "Moi2",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
       "myPoints": 7,
-      "myRank": 287,
-      "leaderPoints": 13,
-      "leaderName": "eliburstein (2)",
+      "myRank": 311,
+      "leaderPoints": 14,
+      "leaderName": "Moi2",
       "participants": 1666,
       "ok": true
     },
@@ -52,9 +52,9 @@
     },
     "triplea3": {
       "myPoints": 7,
-      "myRank": 287,
-      "leaderPoints": 13,
-      "leaderName": "eliburstein (2)",
+      "myRank": 311,
+      "leaderPoints": 14,
+      "leaderName": "Moi2",
       "participants": 1666,
       "ok": true
     }

@@ -218,20 +218,6 @@ def scrape_triplea():
         b.close()
     if "apikey" not in hdrs:
         raise RuntimeError("triplea: no se capturaron cabeceras de sesión")
-    # --- DEBUG: esquema de v_my_predictions usando la poliza de dzebede (accesible) ---
-    def _supa(path):
-        rr = urllib.request.Request("https://knvsrupdwokzgceacpro.supabase.co/rest/v1/" + path,
-                                    headers={**hdrs, "User-Agent": "Mozilla/5.0"})
-        return json.load(urllib.request.urlopen(rr, timeout=30))
-    try:
-        pid = "2456572a-25c8-4834-baad-a43358cae3c0"
-        pr = _supa(f"v_my_predictions?select=*&poliza_id=eq.{pid}&limit=2")
-        log("vmp keys:", list(pr[0].keys()) if pr else "vacío")
-        log("vmp sample:", json.dumps(pr, ensure_ascii=False)[:700])
-        log("vmp count:", len(_supa(f"v_my_predictions?select=poliza_id&poliza_id=eq.{pid}")))
-    except Exception as e:
-        log("vmp debug:", e)
-    # --- fin DEBUG ---
     # paginar leaderboard completo
     rows, off = [], 0
     while True:
@@ -255,6 +241,62 @@ def scrape_triplea():
         else:
             out[pid] = {"ok": False, "error": f"no encontré {alias}"}
     return out
+
+# ----------------------------------------------------------------------------
+# 3b) PRONÓSTICOS de la esposa (dzebede (3)) -> matches.json predictions['triplea3']
+# Sus picks son privados de su cuenta (RLS), así que se entra con SU sesión y se
+# leen de v_my_predictions. Se mapea match_id -> match_number (= "n" de matches.json).
+# ----------------------------------------------------------------------------
+def scrape_triplea3_predictions():
+    email = os.environ.get("TRIPLEA3_EMAIL"); pw = os.environ.get("TRIPLEA3_PASS")
+    if not email or not pw:
+        raise RuntimeError("faltan secrets TRIPLEA3_EMAIL/TRIPLEA3_PASS")
+    hdrs = {}
+    with _pw() as p:
+        b = p.chromium.launch(headless=True)
+        ctx = b.new_context(user_agent="Mozilla/5.0")
+        page = ctx.new_page()
+        def on_req(req):
+            if "/rest/v1/" in req.url and "apikey" not in hdrs:
+                h = req.headers
+                for k in ("apikey", "authorization"):
+                    if k in h: hdrs[k] = h[k]
+        page.on("request", on_req)
+        page.goto("https://pollatriplea.com/login", wait_until="domcontentloaded", timeout=45000)
+        _fill_login(page, email, pw)
+        page.wait_for_timeout(4000)
+        page.goto("https://pollatriplea.com/tabla", wait_until="domcontentloaded", timeout=45000)
+        page.wait_for_timeout(4000)
+        b.close()
+    if "apikey" not in hdrs:
+        raise RuntimeError("triplea3: no se capturaron cabeceras de sesión")
+    def supa(path):
+        rr = urllib.request.Request("https://knvsrupdwokzgceacpro.supabase.co/rest/v1/" + path,
+                                    headers={**hdrs, "User-Agent": "Mozilla/5.0"})
+        return json.load(urllib.request.urlopen(rr, timeout=30))
+    # su poliza (su sesión sólo ve la suya por RLS)
+    pol = supa("polizas?select=poliza_id,sub_username")
+    her = next((r for r in pol if (r.get("sub_username") or "").strip().lower() == "dzebede (3)"), None) \
+          or (pol[0] if pol else None)
+    if not her: raise RuntimeError("triplea3: no se halló su poliza")
+    preds = supa("v_my_predictions?select=match_id,predicted_home_score,predicted_away_score"
+                 f"&poliza_id=eq.{her['poliza_id']}")
+    if not preds: raise RuntimeError("triplea3: sin predicciones")
+    id2n = {m["id"]: m["match_number"] for m in supa("v_matches?select=id,match_number")}
+    bynum = {}
+    for pr in preds:
+        n = id2n.get(pr["match_id"])
+        h, a = pr.get("predicted_home_score"), pr.get("predicted_away_score")
+        if n and h is not None and a is not None:
+            bynum[n] = [h, a]
+    data = json.load(open(MATCHES_JSON, encoding="utf-8"))
+    applied = 0
+    for mt in data["matches"]:
+        pv = bynum.get(mt.get("n"))
+        if pv is not None and mt["predictions"].get("triplea3") != pv:
+            mt["predictions"]["triplea3"] = pv; applied += 1
+    json.dump(data, open(MATCHES_JSON, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    return applied
 
 # ----------------------------------------------------------------------------
 # 4) POLLAPATO (Firebase) -> Colombia (ElGanado)
@@ -349,6 +391,16 @@ def main(results_only=False):
     except Exception as e:
         status["resultados"] = f"FALLO: {e}"
         log("resultados FALLO:", e)
+
+    # pronósticos de la esposa (AAA3) -> matches.json (sólo modo completo, usa navegador)
+    if not results_only:
+        try:
+            n3 = scrape_triplea3_predictions()
+            status["triplea3_preds"] = f"ok ({n3})"
+            log("triplea3 preds OK:", n3)
+        except Exception as e:
+            status["triplea3_preds"] = f"FALLO: {e}"
+            log("triplea3 preds FALLO:", e)
 
     # En modo rápido, si no cambió nada material, conservar el timestamp previo
     # para que standings.json quede idéntico y el cron de 5 min no haga commits vacíos.

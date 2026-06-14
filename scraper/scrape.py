@@ -274,19 +274,10 @@ def scrape_triplea3_predictions():
         rr = urllib.request.Request("https://knvsrupdwokzgceacpro.supabase.co/rest/v1/" + path,
                                     headers={**hdrs, "User-Agent": "Mozilla/5.0"})
         return json.load(urllib.request.urlopen(rr, timeout=30))
-    # su poliza (su sesión sólo ve la suya por RLS)
-    pol = supa("polizas?select=poliza_id,sub_username,label,predictions_count")
-    log("triplea3 polizas visibles:", json.dumps(pol, ensure_ascii=False)[:500])
-    her = next((r for r in pol if (r.get("sub_username") or "").strip().lower() == "dzebede (3)"), None) \
-          or (pol[0] if pol else None)
-    if not her: raise RuntimeError("triplea3: no se halló su poliza")
-    preds = supa("v_my_predictions?select=match_id,predicted_home_score,predicted_away_score"
-                 f"&poliza_id=eq.{her['poliza_id']}")
-    log("triplea3 poliza elegida:", her.get("sub_username"), her["poliza_id"], "| n preds:", len(preds))
-    if not preds:
-        # fallback: sin filtro de poliza (v_my_predictions ya está acotado por RLS a su usuario)
-        preds = supa("v_my_predictions?select=match_id,predicted_home_score,predicted_away_score,poliza_id")
-        log("triplea3 preds sin filtro:", len(preds))
+    # v_my_predictions ya viene acotado por RLS al usuario de la sesión: sin filtro
+    # devuelve exactamente sus 72 picks (no hace falta resolver su poliza_id, que
+    # además no es fiable: 'polizas' expone polizas de otros usuarios).
+    preds = supa("v_my_predictions?select=match_id,predicted_home_score,predicted_away_score")
     if not preds: raise RuntimeError("triplea3: sin predicciones")
     id2n = {m["id"]: m["match_number"] for m in supa("v_matches?select=id,match_number")}
     bynum = {}

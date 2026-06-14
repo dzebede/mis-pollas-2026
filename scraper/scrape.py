@@ -139,15 +139,27 @@ def scrape_polla26():
             pg.wait_for_timeout(5000)
             pg.goto("https://polla26.com/pools", wait_until="domcontentloaded", timeout=45000)
             pg.wait_for_timeout(4000)
+            # La tarjeta "PUNTAJE/POSICIÓN" está en el tab "Resumen": clicarlo si existe.
+            clicked = None
+            for sel in ['[role=tab]:has-text("Resumen")', 'button:has-text("Resumen")',
+                        'a:has-text("Resumen")', 'text="Resumen"']:
+                try:
+                    if pg.locator(sel).count():
+                        pg.locator(sel).first.click(); pg.wait_for_timeout(2500)
+                        clicked = sel; break
+                except Exception:
+                    pass
             pt = re.sub(r'\s+', ' ', pg.inner_text("body"))
             cur = pg.url
+            tabs = pg.eval_on_selector_all(
+                'a,button,[role=tab]',
+                "els=>Array.from(new Set(els.map(e=>(e.textContent||'').trim()).filter(t=>t&&t.length<20))).slice(0,25)")
             b.close()
         # --- diagnóstico temporal ---
-        log("polla26 /pools URL final:", cur, "| len texto:", len(pt))
+        log("polla26 /pools URL:", cur, "| clic Resumen:", clicked, "| len:", len(pt))
+        log("polla26 /pools tabs/botones:", tabs)
         ip = pt.upper().find("POSICI")
         log("polla26 /pools cerca POSICI:", pt[max(0,ip-25):ip+90] if ip >= 0 else "(NO aparece 'POSICI')")
-        ij = pt.upper().find("PUNTAJE")
-        log("polla26 /pools cerca PUNTAJE:", pt[max(0,ij-10):ij+70] if ij >= 0 else "(NO aparece 'PUNTAJE')")
         # --- fin diagnóstico ---
         # si hay varias pollas, anclar el bloque cerca de "Belfort"; si no, todo el texto
         bi = pt.find("Belfort")

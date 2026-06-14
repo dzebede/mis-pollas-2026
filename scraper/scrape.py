@@ -222,15 +222,26 @@ def scrape_triplea():
         b.close()
     if "apikey" not in hdrs:
         raise RuntimeError("triplea: no se capturaron cabeceras de sesión")
-    # --- DEBUG temporal: descubrir tablas/vistas y endpoints ---
-    log("triplea endpoints vistos:", sorted(set(seen))[:40])
-    try:
-        rr = urllib.request.Request("https://knvsrupdwokzgceacpro.supabase.co/rest/v1/",
+    # --- DEBUG temporal: poliza_id de dzebede (3) + esquemas de predicciones/partidos ---
+    def supa(path):
+        rr = urllib.request.Request("https://knvsrupdwokzgceacpro.supabase.co/rest/v1/" + path,
                                     headers={**hdrs, "User-Agent": "Mozilla/5.0"})
-        spec = json.load(urllib.request.urlopen(rr, timeout=30))
-        log("triplea TABLAS:", sorted((spec.get("definitions") or {}).keys()))
+        return json.load(urllib.request.urlopen(rr, timeout=30))
+    try:
+        pol = supa("polizas?select=poliza_id,sub_username,label&limit=5000")
+        byname = {(r.get("sub_username") or "").strip().lower(): r for r in pol}
+        for a in ("dzebede", "dzebede (2)", "dzebede (3)"):
+            log("poliza", a, "->", byname.get(a, {}).get("poliza_id"))
+        pid3 = byname.get("dzebede (3)", {}).get("poliza_id")
+        if pid3:
+            preds = supa(f"v_my_predictions?select=*&poliza_id=eq.{pid3}&limit=2")
+            log("triplea v_my_predictions muestra:", json.dumps(preds, ensure_ascii=False)[:900])
+            allp = supa(f"v_my_predictions?select=poliza_id&poliza_id=eq.{pid3}")
+            log("triplea n preds dzebede(3):", len(allp))
+        mt = supa("v_matches?select=*&order=kickoff_at.asc&limit=2")
+        log("triplea v_matches muestra:", json.dumps(mt, ensure_ascii=False)[:900])
     except Exception as e:
-        log("triplea REST root:", e)
+        log("triplea explore2:", e)
     # --- fin DEBUG ---
     # paginar leaderboard completo
     rows, off = [], 0

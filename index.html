@@ -32,7 +32,14 @@
   .sec{font-size:16px;font-weight:800;margin:20px 4px 11px;letter-spacing:.2px}
   .sec:first-child{margin-top:4px}
   .posgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
-  @media(max-width:620px){ .posgrid{grid-template-columns:repeat(3,minmax(0,1fr))} }
+  /* siempre 6 en una fila; se compactan para caber en una pantalla de teléfono */
+  @media(max-width:600px){ .posgrid{gap:3px}
+    .pmini{padding:7px 2px 6px;border-radius:9px;border-top-width:2px}
+    .pm-fl{font-size:15px} .pm-nm{font-size:8px} .pm-pts{font-size:16px}
+    .pm-pts span{font-size:7px} .pm-r{font-size:10.5px} .pm-l{font-size:7.5px} }
+  @media(max-width:380px){ .posgrid{gap:2px}
+    .pm-fl{font-size:13px} .pm-nm{font-size:7px} .pm-pts{font-size:14px}
+    .pm-r{font-size:9.5px} .pm-l{font-size:6.5px} }
   .pmini{display:block;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);
     border-radius:12px;padding:9px 4px 8px;text-align:center;text-decoration:none;color:var(--txt);min-width:0}
   .pm-h{display:flex;flex-direction:column;align-items:center;gap:1px;margin-bottom:4px}
@@ -42,7 +49,6 @@
   .pm-pts span{font-size:9px;color:var(--mut);font-weight:600;margin-left:1px}
   .pm-r{font-size:12.5px;font-weight:700;margin-top:3px}
   .pm-l{font-size:9px;color:var(--mut);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  @media(max-width:440px){ .pm-nm{font-size:9px} .pm-pts{font-size:20px} .pmini{padding:8px 3px 7px} }
   .daysgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px;align-items:start}
   .dayblock{min-width:0}
   .dayhdr{display:flex;justify-content:space-between;align-items:baseline;gap:8px;

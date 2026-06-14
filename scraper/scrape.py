@@ -123,18 +123,28 @@ def scrape_polla26():
     mine = re.search(r'Belfort\s+\S+\s+(\d+)\s+Ver', reg) or re.search(r'Belfort[^\d]{0,20}(\d+)', reg)
     myPts = int(mine.group(1)) if mine else None
     parts = re.search(r'PARTICIPANTES\s*(\d+)', txt)
-    # La posición vive en la pestaña Pollas (/pools), no en /dashboard. Ahí está el
-    # bloque "PUNTAJE 10 · POSICIÓN #13 de 478 · 5 Detrás del líder". De ahí salen
-    # posición, total real de participantes y, si falta, puntaje y puntos del líder.
+    if myPts is None: raise RuntimeError("polla26: no se halló puntaje de Belfort")
+    # La posición vive en la pestaña Pollas (/pools), que se pinta con JavaScript:
+    # urllib no la ve, así que se renderiza con navegador. Bloque esperado:
+    # "PUNTAJE 10 · POSICIÓN #13 de 478 · 5 Detrás del líder".
+    # Best-effort: si el navegador falla, se conservan puntos/líder del dashboard.
     myRank = rankParts = None
     try:
-        pools = op.open("https://polla26.com/pools", timeout=30).read().decode('utf-8', 'ignore')
-        pt = strip_html(pools)
+        with _pw() as p:
+            b = p.chromium.launch(headless=True)
+            ctx = b.new_context(user_agent="Mozilla/5.0")
+            pg = ctx.new_page()
+            pg.goto("https://polla26.com/login", wait_until="domcontentloaded", timeout=45000)
+            _fill_login(pg, email, pw)
+            pg.wait_for_timeout(5000)
+            pg.goto("https://polla26.com/pools", wait_until="domcontentloaded", timeout=45000)
+            pg.wait_for_timeout(4000)
+            pt = re.sub(r'\s+', ' ', pg.inner_text("body"))
+            b.close()
         # si hay varias pollas, anclar el bloque cerca de "Belfort"; si no, todo el texto
         bi = pt.find("Belfort")
         seg = pt[bi:bi+700] if bi >= 0 else pt
-        def find(rx):
-            return re.search(rx, seg, re.I) or re.search(rx, pt, re.I)
+        def find(rx): return re.search(rx, seg, re.I) or re.search(rx, pt, re.I)
         mrank = find(r'POSICI[ÓO]N\s*#?\s*(\d+)\s*de\s*([\d.,]+)')
         if mrank:
             myRank = int(mrank.group(1)); rankParts = int(re.sub(r'\D', '', mrank.group(2)))
@@ -145,7 +155,6 @@ def scrape_polla26():
             if mgap and myPts is not None: leaderPts = myPts + int(mgap.group(1))
     except Exception as e:
         log("polla26 /pools:", e)
-    if myPts is None: raise RuntimeError("polla26: no se halló puntaje de Belfort")
     return {"polla26": {"myPoints": myPts, "myRank": myRank, "leaderPoints": leaderPts,
                          "leaderName": leaderName,
                          "participants": rankParts or (int(parts.group(1)) if parts else None),

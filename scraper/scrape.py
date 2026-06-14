@@ -123,18 +123,28 @@ def scrape_polla26():
     mine = re.search(r'Belfort\s+\S+\s+(\d+)\s+Ver', reg) or re.search(r'Belfort[^\d]{0,20}(\d+)', reg)
     myPts = int(mine.group(1)) if mine else None
     parts = re.search(r'PARTICIPANTES\s*(\d+)', txt)
-    # Tab "Resumen": "PUNTAJE 10 · POSICIÓN #13 de 478 · 5 Detrás del líder".
-    # De ahí salen posición, total real de participantes de la polla y, si falta,
-    # puntaje y puntos del líder (= míos + diferencia).
-    mrank = re.search(r'POSICI[ÓO]N\s*#?\s*(\d+)\s*de\s*([\d.,]+)', txt, re.I)
-    myRank = int(mrank.group(1)) if mrank else None
-    rankParts = int(re.sub(r'\D', '', mrank.group(2))) if mrank else None
-    if myPts is None:
-        mp2 = re.search(r'PUNTAJE\s*(\d+)', txt, re.I)
-        myPts = int(mp2.group(1)) if mp2 else None
-    if leaderPts is None:
-        mgap = re.search(r'(\d+)\s*Detr[aá]s del l[ií]der', txt, re.I)
-        if mgap and myPts is not None: leaderPts = myPts + int(mgap.group(1))
+    # La posición vive en la pestaña Pollas (/pools), no en /dashboard. Ahí está el
+    # bloque "PUNTAJE 10 · POSICIÓN #13 de 478 · 5 Detrás del líder". De ahí salen
+    # posición, total real de participantes y, si falta, puntaje y puntos del líder.
+    myRank = rankParts = None
+    try:
+        pools = op.open("https://polla26.com/pools", timeout=30).read().decode('utf-8', 'ignore')
+        pt = strip_html(pools)
+        # si hay varias pollas, anclar el bloque cerca de "Belfort"; si no, todo el texto
+        bi = pt.find("Belfort")
+        seg = pt[bi:bi+700] if bi >= 0 else pt
+        def find(rx):
+            return re.search(rx, seg, re.I) or re.search(rx, pt, re.I)
+        mrank = find(r'POSICI[ÓO]N\s*#?\s*(\d+)\s*de\s*([\d.,]+)')
+        if mrank:
+            myRank = int(mrank.group(1)); rankParts = int(re.sub(r'\D', '', mrank.group(2)))
+        mpts = find(r'PUNTAJE\s*(\d+)')
+        if mpts: myPts = int(mpts.group(1))          # fuente más limpia que el dashboard
+        if leaderPts is None:
+            mgap = find(r'(\d+)\s*Detr[aá]s del l[ií]der')
+            if mgap and myPts is not None: leaderPts = myPts + int(mgap.group(1))
+    except Exception as e:
+        log("polla26 /pools:", e)
     if myPts is None: raise RuntimeError("polla26: no se halló puntaje de Belfort")
     return {"polla26": {"myPoints": myPts, "myRank": myRank, "leaderPoints": leaderPts,
                          "leaderName": leaderName,

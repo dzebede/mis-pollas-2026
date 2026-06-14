@@ -230,7 +230,8 @@ def scrape_triplea():
     if not rows: raise RuntimeError("triplea: leaderboard vacío")
     leader = rows[0]
     out = {}
-    for pid, alias in (("triplea", "dzebede"), ("triplea2", "dzebede (2)")):
+    for pid, alias in (("triplea", "dzebede"), ("triplea2", "dzebede (2)"),
+                       ("triplea3", "dzebede (3)")):
         m = next((r for r in rows if (r.get("sub_username") or "").strip().lower() == alias.lower()), None)
         if m:
             out[pid] = {"myPoints": m.get("total_points"), "myRank": m.get("rank"),

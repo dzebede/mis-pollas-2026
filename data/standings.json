@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13T22:10:21-05:00",
+  "updated": "2026-06-13T22:25:55-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -26,18 +26,18 @@
       "ok": true
     },
     "triplea": {
-      "myPoints": 5,
-      "myRank": 341,
-      "leaderPoints": 12,
-      "leaderName": "globaljak",
+      "myPoints": 6,
+      "myRank": 438,
+      "leaderPoints": 13,
+      "leaderName": "alejandrohopkins (2)",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
-      "myPoints": 4,
-      "myRank": 564,
-      "leaderPoints": 12,
-      "leaderName": "globaljak",
+      "myPoints": 7,
+      "myRank": 287,
+      "leaderPoints": 13,
+      "leaderName": "alejandrohopkins (2)",
       "participants": 1666,
       "ok": true
     },

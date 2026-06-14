@@ -218,6 +218,20 @@ def scrape_triplea():
         b.close()
     if "apikey" not in hdrs:
         raise RuntimeError("triplea: no se capturaron cabeceras de sesión")
+    # --- DEBUG: esquema de v_my_predictions usando la poliza de dzebede (accesible) ---
+    def _supa(path):
+        rr = urllib.request.Request("https://knvsrupdwokzgceacpro.supabase.co/rest/v1/" + path,
+                                    headers={**hdrs, "User-Agent": "Mozilla/5.0"})
+        return json.load(urllib.request.urlopen(rr, timeout=30))
+    try:
+        pid = "2456572a-25c8-4834-baad-a43358cae3c0"
+        pr = _supa(f"v_my_predictions?select=*&poliza_id=eq.{pid}&limit=2")
+        log("vmp keys:", list(pr[0].keys()) if pr else "vacío")
+        log("vmp sample:", json.dumps(pr, ensure_ascii=False)[:700])
+        log("vmp count:", len(_supa(f"v_my_predictions?select=poliza_id&poliza_id=eq.{pid}")))
+    except Exception as e:
+        log("vmp debug:", e)
+    # --- fin DEBUG ---
     # paginar leaderboard completo
     rows, off = [], 0
     while True:

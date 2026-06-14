@@ -1,17 +1,18 @@
 {
-  "updated": "2026-06-13T23:25:59-05:00",
+  "updated": "2026-06-13T23:30:30-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (0 aplicados)"
+    "resultados": "ok (1 aplicados)",
+    "triplea3_preds": "FALLO: faltan secrets TRIPLEA3_EMAIL/TRIPLEA3_PASS"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 1,
-      "myRank": 113,
+      "myRank": 116,
       "leaderPoints": 4,
       "leaderName": "Bela Boys 1",
       "participants": 350,
@@ -43,8 +44,8 @@
     },
     "kicktipp": {
       "myPoints": 8,
-      "myRank": 23,
-      "leaderPoints": 16,
+      "myRank": 19,
+      "leaderPoints": 18,
       "leaderName": "Fritoconqueso",
       "participants": null,
       "ok": true

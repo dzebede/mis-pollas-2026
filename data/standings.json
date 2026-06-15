@@ -1,44 +1,44 @@
 {
-  "updated": "2026-06-14T22:14:03-05:00",
+  "updated": "2026-06-14T22:20:28-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (2 aplicados)",
+    "resultados": "ok (1 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 1,
-      "myRank": 113,
-      "leaderPoints": 4,
+      "myRank": 137,
+      "leaderPoints": 5,
       "leaderName": "Bela Boys 1",
       "participants": 350,
       "ok": true
     },
     "polla26": {
-      "myPoints": 11,
-      "myRank": 14,
-      "leaderPoints": 16,
+      "myPoints": 12,
+      "myRank": 13,
+      "leaderPoints": 17,
       "leaderName": "RafaelN",
       "participants": 478,
       "ok": true
     },
     "triplea": {
       "myPoints": 7,
-      "myRank": 478,
-      "leaderPoints": 15,
-      "leaderName": "Moi2",
+      "myRank": 627,
+      "leaderPoints": 18,
+      "leaderName": "Worldwide",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
-      "myPoints": 8,
-      "myRank": 309,
-      "leaderPoints": 15,
-      "leaderName": "Moi2",
+      "myPoints": 9,
+      "myRank": 254,
+      "leaderPoints": 18,
+      "leaderName": "Worldwide",
       "participants": 1666,
       "ok": true
     },
@@ -52,9 +52,9 @@
     },
     "triplea3": {
       "myPoints": 8,
-      "myRank": 309,
-      "leaderPoints": 15,
-      "leaderName": "Moi2",
+      "myRank": 443,
+      "leaderPoints": 18,
+      "leaderName": "Worldwide",
       "participants": 1666,
       "ok": true
     }

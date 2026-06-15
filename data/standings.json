@@ -1,26 +1,26 @@
 {
-  "updated": "2026-06-15T15:20:05-05:00",
+  "updated": "2026-06-15T18:25:33-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
-    "pollapato": "FALLO: pollapato: no se parseó ElGanado del dashboard",
-    "resultados": "ok (1 aplicados)",
+    "pollapato": "ok",
+    "resultados": "ok (2 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 1,
-      "myRank": 123,
-      "leaderPoints": 4,
-      "leaderName": "Alemma",
+      "myRank": 133,
+      "leaderPoints": 5,
+      "leaderName": "Bela Boys 1",
       "participants": 350,
       "ok": true
     },
     "polla26": {
       "myPoints": 13,
-      "myRank": 12,
+      "myRank": 17,
       "leaderPoints": 18,
       "leaderName": "RafaelN",
       "participants": 478,
@@ -28,15 +28,15 @@
     },
     "triplea": {
       "myPoints": 8,
-      "myRank": 596,
+      "myRank": 655,
       "leaderPoints": 19,
       "leaderName": "Worldwide",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
-      "myPoints": 10,
-      "myRank": 235,
+      "myPoints": 13,
+      "myRank": 61,
       "leaderPoints": 19,
       "leaderName": "Worldwide",
       "participants": 1666,
@@ -44,7 +44,7 @@
     },
     "kicktipp": {
       "myPoints": 14,
-      "myRank": 15,
+      "myRank": 17,
       "leaderPoints": 24,
       "leaderName": "Fritoconqueso",
       "participants": null,
@@ -52,7 +52,7 @@
     },
     "triplea3": {
       "myPoints": 9,
-      "myRank": 393,
+      "myRank": 451,
       "leaderPoints": 19,
       "leaderName": "Worldwide",
       "participants": 1666,

@@ -1,0 +1,80 @@
+name: Live updater (loop en vivo)
+
+# GitHub NO respeta los crons frecuentes (*/5 se descarta casi siempre). En vez de
+# eso, un solo job se queda corriendo y scrapea cada 5 min DE VERDAD (el sleep del
+# runner sí es confiable). Marcadores cada 5 min; standings completo cada ~30 min.
+# Se arranca con horarios de baja frecuencia (más fiables) + disparo manual, y se
+# apaga solo fuera de la ventana de partidos (07-18 UTC).
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # Arranques en la ventana de partidos (UTC). Con timeout largo + estos arranques
+    # encolados, la cobertura es continua aunque GitHub se salte alguno.
+    - cron: "2 19,22,1,4 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  # Grupo propio (no el de los otros workflows) para no bloquearlos; los choques de
+  # push se resuelven con git pull --rebase + reintento en la siguiente vuelta.
+  group: pollas-live
+  cancel-in-progress: false
+
+jobs:
+  loop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330   # ~5.5 h por arranque
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar Playwright + Chromium
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Loop de refresco (cada 5 min)
+        env:
+          P26_EMAIL: ${{ secrets.P26_EMAIL }}
+          P26_PASS: ${{ secrets.P26_PASS }}
+          TRIPLEA_EMAIL: ${{ secrets.TRIPLEA_EMAIL }}
+          TRIPLEA_PASS: ${{ secrets.TRIPLEA_PASS }}
+          TRIPLEA3_EMAIL: ${{ secrets.TRIPLEA3_EMAIL }}
+          TRIPLEA3_PASS: ${{ secrets.TRIPLEA3_PASS }}
+          POLLAPATO_EMAIL: ${{ secrets.POLLAPATO_EMAIL }}
+          POLLAPATO_PASS: ${{ secrets.POLLAPATO_PASS }}
+        run: |
+          git config user.name "pollas-bot"
+          git config user.email "bot@users.noreply.github.com"
+          for i in $(seq 1 64); do
+            hour=$((10#$(date -u +%H)))   # 10# evita el bug de octal con 08/09
+            # fuera de ventana de partidos (07-18 UTC) -> terminar
+            if [ "$hour" -ge 7 ] && [ "$hour" -le 18 ]; then
+              echo "Fuera de ventana ($hour UTC). Fin del loop."
+              break
+            fi
+            # cada 6ta vuelta (~30 min) scrape completo (standings); el resto, sólo marcadores
+            if [ $(( (i-1) % 6 )) -eq 0 ]; then
+              echo "== vuelta $i: completo =="
+              python scraper/scrape.py || true
+            else
+              echo "== vuelta $i: marcadores =="
+              python scraper/scrape.py --results-only || true
+            fi
+            git add data/standings.json data/matches.json
+            if ! git diff --staged --quiet; then
+              git commit -m "live refresh $(date -u +%FT%TZ)"
+              git pull --rebase origin main || true
+              git push || true
+            else
+              echo "sin cambios"
+            fi
+            # no dormir en la última vuelta
+            if [ "$i" -lt 64 ]; then sleep 300; fi
+          done

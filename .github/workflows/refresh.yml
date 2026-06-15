@@ -3,7 +3,7 @@ name: Refrescar standings (completo)
 on:
   schedule:
     # Horario en UTC. Ventana de partidos ~19:00-07:00 UTC (14:00-02:00 Panamá).
-    - cron: "*/15 19-23,0-6 * * *"   # standings de las 5 pollas: cada 15 min en partidos
+    - cron: "*/10 19-23,0-6 * * *"   # standings de las pollas: cada 10 min en partidos
     - cron: "0 7-18/3 * * *"         # fuera de partidos: cada 3 h
   workflow_dispatch: {}   # botón "Run workflow" manual
 

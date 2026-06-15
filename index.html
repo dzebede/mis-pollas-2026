@@ -24,6 +24,12 @@
   .h-top h1{font-size:17px;margin:0;font-weight:800;letter-spacing:.2px}
   .h-top h1 span{color:var(--accent)}
   .upd{font-size:11px;color:var(--mut);text-align:right;line-height:1.3}
+  .updwrap{display:flex;align-items:center;gap:8px}
+  .refbtn{background:var(--card2);border:1px solid var(--line);color:var(--txt);width:36px;height:36px;
+    border-radius:10px;font-size:18px;font-weight:700;flex:none;line-height:1;padding:0}
+  .refbtn:active{background:var(--accent);color:#1a1300;border-color:var(--accent)}
+  .refbtn.spin{animation:spin .8s linear infinite;pointer-events:none;opacity:.6}
+  @keyframes spin{to{transform:rotate(360deg)}}
   .seg{display:flex;gap:6px;margin:12px 0 10px}
   .seg button{flex:1;background:var(--card);color:var(--mut);border:1px solid var(--line);
     padding:9px 4px;border-radius:11px;font-size:13px;font-weight:700;white-space:nowrap}
@@ -141,7 +147,10 @@
 <header>
   <div class="h-top">
     <h1>Mis Pollas <span>Mundial 2026</span></h1>
-    <div class="upd" id="upd"></div>
+    <div class="updwrap">
+      <div class="upd" id="upd"></div>
+      <button id="btnRefresh" class="refbtn" onclick="manualRefresh()" title="Actualizar" aria-label="Actualizar">↻</button>
+    </div>
   </div>
   <div class="seg">
     <button id="segResumen" class="on" onclick="setView('resumen')">📊 Posiciones y Partidos</button>
@@ -206,6 +215,19 @@ async function load(){
   const u=new Date(STAND.updated);
   document.getElementById('upd').innerHTML='actualizado<br>'+u.toLocaleString('es',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
   renderResumen(); renderTabla();
+}
+
+async function manualRefresh(){
+  const b=document.getElementById('btnRefresh');
+  if(b.classList.contains('spin')) return;
+  b.classList.add('spin');
+  const keepDay=curDay;
+  try{
+    await load();
+    if(keepDay>=0 && keepDay<days.length){ curDay=keepDay; renderResumen(); }
+    setView(view);
+  }catch(e){}
+  finally{ b.classList.remove('spin'); }
 }
 
 function setView(v){

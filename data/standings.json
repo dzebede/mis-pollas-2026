@@ -1,11 +1,11 @@
 {
-  "updated": "2026-06-15T14:09:18-05:00",
+  "updated": "2026-06-15T15:20:05-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
-    "pollapato": "ok",
+    "pollapato": "FALLO: pollapato: no se parseó ElGanado del dashboard",
     "resultados": "ok (1 aplicados)",
     "triplea3_preds": "ok (0)"
   },
@@ -44,7 +44,7 @@
     },
     "kicktipp": {
       "myPoints": 14,
-      "myRank": 16,
+      "myRank": 15,
       "leaderPoints": 24,
       "leaderName": "Fritoconqueso",
       "participants": null,

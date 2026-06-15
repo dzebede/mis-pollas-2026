@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-14T22:20:28-05:00",
+  "updated": "2026-06-14T22:25:46-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (1 aplicados)",
+    "resultados": "ok (0 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {
@@ -43,7 +43,7 @@
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 15,
+      "myPoints": 14,
       "myRank": 15,
       "leaderPoints": 24,
       "leaderName": "Fritoconqueso",

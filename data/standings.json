@@ -1,13 +1,13 @@
 {
-  "updated": "2026-06-14T23:25:54-05:00",
+  "updated": "2026-06-14T23:59:14-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
-    "triplea": "ok",
+    "triplea": "FALLO: triplea: no se capturaron cabeceras de sesión",
     "pollapato": "ok",
     "resultados": "ok (0 aplicados)",
-    "triplea3_preds": "ok (0)"
+    "triplea3_preds": "FALLO: triplea3: no se capturaron cabeceras de sesión"
   },
   "pollas": {
     "pollapato": {
@@ -19,9 +19,9 @@
       "ok": true
     },
     "polla26": {
-      "myPoints": 12,
-      "myRank": 13,
-      "leaderPoints": 17,
+      "myPoints": 13,
+      "myRank": 12,
+      "leaderPoints": 18,
       "leaderName": "RafaelN",
       "participants": 478,
       "ok": true

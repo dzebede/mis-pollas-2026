@@ -11,7 +11,7 @@ on:
   schedule:
     # Arranques en la ventana de partidos (UTC). Con timeout largo + estos arranques
     # encolados, la cobertura es continua aunque GitHub se salte alguno.
-    - cron: "2 19,22,1,4 * * *"
+    - cron: "2 17,20,23,2 * * *"
 
 permissions:
   contents: write
@@ -54,8 +54,8 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
           for i in $(seq 1 64); do
             hour=$((10#$(date -u +%H)))   # 10# evita el bug de octal con 08/09
-            # fuera de ventana de partidos (07-18 UTC) -> terminar
-            if [ "$hour" -ge 7 ] && [ "$hour" -le 18 ]; then
+            # fuera de ventana de partidos (08-16 UTC = madrugada/mañana Panamá) -> terminar
+            if [ "$hour" -ge 8 ] && [ "$hour" -le 16 ]; then
               echo "Fuera de ventana ($hour UTC). Fin del loop."
               break
             fi

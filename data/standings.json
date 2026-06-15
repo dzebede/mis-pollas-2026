@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15T13:01:32-05:00",
+  "updated": "2026-06-15T14:09:18-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -28,7 +28,7 @@
     },
     "triplea": {
       "myPoints": 8,
-      "myRank": 593,
+      "myRank": 596,
       "leaderPoints": 19,
       "leaderName": "Worldwide",
       "participants": 1666,
@@ -36,7 +36,7 @@
     },
     "triplea2": {
       "myPoints": 10,
-      "myRank": 234,
+      "myRank": 235,
       "leaderPoints": 19,
       "leaderName": "Worldwide",
       "participants": 1666,
@@ -44,7 +44,7 @@
     },
     "kicktipp": {
       "myPoints": 14,
-      "myRank": 15,
+      "myRank": 16,
       "leaderPoints": 24,
       "leaderName": "Fritoconqueso",
       "participants": null,
@@ -52,7 +52,7 @@
     },
     "triplea3": {
       "myPoints": 9,
-      "myRank": 391,
+      "myRank": 393,
       "leaderPoints": 19,
       "leaderName": "Worldwide",
       "participants": 1666,

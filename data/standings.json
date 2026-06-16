@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15T23:23:21-05:00",
+  "updated": "2026-06-16T08:18:57-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -20,9 +20,9 @@
     },
     "polla26": {
       "myPoints": 13,
-      "myRank": 19,
-      "leaderPoints": 18,
-      "leaderName": "RafaelN",
+      "myRank": 23,
+      "leaderPoints": 19,
+      "leaderName": "PEN8B",
       "participants": 478,
       "ok": true
     },

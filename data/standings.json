@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15T20:37:57-05:00",
+  "updated": "2026-06-15T21:11:03-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -12,9 +12,9 @@
   "pollas": {
     "pollapato": {
       "myPoints": 1,
-      "myRank": 145,
+      "myRank": 161,
       "leaderPoints": 5,
-      "leaderName": "Bela Boys 1",
+      "leaderName": "Alemma",
       "participants": 350,
       "ok": true
     },

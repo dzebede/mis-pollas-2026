@@ -1,42 +1,42 @@
 {
-  "updated": "2026-06-16T19:04:30-05:00",
+  "updated": "2026-06-16T19:38:12-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (2 aplicados)",
+    "resultados": "ok (0 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 1,
-      "myRank": 143,
+      "myRank": 170,
       "leaderPoints": 5,
       "leaderName": "Bela Boys 1",
       "participants": 350,
       "ok": true
     },
     "polla26": {
-      "myPoints": 13,
-      "myRank": 23,
-      "leaderPoints": 19,
+      "myPoints": 15,
+      "myRank": 30,
+      "leaderPoints": 20,
       "leaderName": "PEN8B",
       "participants": 478,
       "ok": true
     },
     "triplea": {
-      "myPoints": 8,
-      "myRank": 720,
+      "myPoints": 10,
+      "myRank": 798,
       "leaderPoints": 23,
       "leaderName": "david (9)",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
-      "myPoints": 13,
-      "myRank": 97,
+      "myPoints": 14,
+      "myRank": 189,
       "leaderPoints": 23,
       "leaderName": "david (9)",
       "participants": 1666,
@@ -51,8 +51,8 @@
       "ok": true
     },
     "triplea3": {
-      "myPoints": 9,
-      "myRank": 546,
+      "myPoints": 11,
+      "myRank": 615,
       "leaderPoints": 23,
       "leaderName": "david (9)",
       "participants": 1666,

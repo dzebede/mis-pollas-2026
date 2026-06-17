@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16T21:13:01-05:00",
+  "updated": "2026-06-16T21:18:07-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -47,7 +47,7 @@
       "myRank": 22,
       "leaderPoints": 33,
       "leaderName": "Fritoconqueso",
-      "participants": null,
+      "participants": 39,
       "ok": true
     },
     "triplea3": {

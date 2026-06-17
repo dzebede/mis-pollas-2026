@@ -50,29 +50,30 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
           for i in $(seq 1 50); do
             hour=$((10#$(date -u +%H)))   # 10# evita el bug de octal con 08/09
-            # fuera de ventana de partidos (08-16 UTC = madrugada/mañana Panamá) -> salir
+            # fuera de ventana de partidos (08-16 UTC = madrugada/mañana Panamá): en
+            # reposo (no scrapea), pero el ciclo sigue vivo para no romper la cadena.
             if [ "$hour" -ge 8 ] && [ "$hour" -le 16 ]; then
-              echo "Fuera de ventana ($hour UTC). Fin del ciclo."
-              break
-            fi
-            # cada 6ta vuelta (~30 min) scrape completo (standings); el resto, sólo marcadores
-            if [ $(( (i-1) % 6 )) -eq 0 ]; then
-              echo "== vuelta $i: completo =="
-              python scraper/scrape.py || true
+              echo "== vuelta $i: fuera de ventana ($hour UTC), en reposo =="
             else
-              echo "== vuelta $i: marcadores =="
-              python scraper/scrape.py --results-only || true
-            fi
-            git add data/standings.json data/matches.json
-            if ! git diff --staged --quiet; then
-              git commit -m "live refresh $(date -u +%FT%TZ)"
-              # push resiliente (reintenta ante cualquier choque; no aborta el loop)
-              for k in 1 2 3 4 5; do
-                git pull --rebase origin main || true
-                git push && break || { echo "push falló (intento $k), reintento…"; sleep 3; }
-              done
-            else
-              echo "sin cambios"
+              # cada 6ta vuelta (~30 min) scrape completo (standings); el resto, sólo marcadores
+              if [ $(( (i-1) % 6 )) -eq 0 ]; then
+                echo "== vuelta $i: completo =="
+                python scraper/scrape.py || true
+              else
+                echo "== vuelta $i: marcadores =="
+                python scraper/scrape.py --results-only || true
+              fi
+              git add data/standings.json data/matches.json
+              if ! git diff --staged --quiet; then
+                git commit -m "live refresh $(date -u +%FT%TZ)"
+                # push resiliente (reintenta ante cualquier choque; no aborta el loop)
+                for k in 1 2 3 4 5; do
+                  git pull --rebase origin main || true
+                  git push && break || { echo "push falló (intento $k), reintento…"; sleep 3; }
+                done
+              else
+                echo "sin cambios"
+              fi
             fi
             if [ "$i" -lt 50 ]; then sleep 300; fi
           done
@@ -82,15 +83,12 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
-          hour=$((10#$(date -u +%H)))
           if [ -z "$GH_PAT" ]; then
             echo "Sin secret GH_PAT: no me re-encadeno. Configúralo para 24/7 sin huecos."
             exit 0
           fi
-          if [ "$hour" -ge 8 ] && [ "$hour" -le 16 ]; then
-            echo "Fuera de ventana ($hour UTC): no re-encadeno; el cron de las 17:02 rearranca."
-            exit 0
-          fi
+          # Re-encadeno SIEMPRE (24/7): la cadena se auto-sostiene sin depender del cron.
+          # En reposo de madrugada el ciclo no scrapea, pero la cadena no se rompe.
           code=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
             -H "Authorization: Bearer $GH_PAT" -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/${{ github.repository }}/actions/workflows/live.yml/dispatches" \

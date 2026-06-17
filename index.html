@@ -97,6 +97,7 @@
   /* ---- match ---- */
   .match{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:9px 10px;margin-bottom:8px}
   .m-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--mut);margin-bottom:7px}
+  .est{color:var(--blue);white-space:nowrap}
   .m-grp{background:var(--bg2);padding:2px 8px;border-radius:20px;font-weight:700}
   .m-live{color:var(--red);font-weight:800}
   .m-teams{display:flex;align-items:center;gap:8px;margin-bottom:8px}
@@ -201,6 +202,18 @@ function prettyDay(ds){
   const dt=new Date(Date.UTC(y,m-1,d));
   return DOW[dt.getUTCDay()]+' '+d+' '+MON[m-1];
 }
+// hora "HH:MM" (24h, Panamá) -> "2:00 PM" (AM/PM, espacio fijo para no partir)
+function to12(t){
+  let [h,m]=t.split(':').map(Number);
+  const ap=h<12?'AM':'PM'; const hh=h%12||12;
+  return hh+':'+String(m).padStart(2,'0')+' '+ap;
+}
+// Panamá (UTC-5) + EST/Este de EE.UU. (verano = UTC-4 = Panamá +1h)
+function fmtTime(t){
+  const [h,m]=t.split(':').map(Number);
+  const est=String((h+1)%24).padStart(2,'0')+':'+String(m).padStart(2,'0');
+  return to12(t)+' <span class="est">'+to12(est)+' EST</span>';
+}
 
 async function load(){
   [CONFIG,MATCHES,STAND] = await Promise.all([
@@ -268,7 +281,7 @@ function buildMatch(m){
         <div class="sc ${m.result?lvl:''}">${txt}${badge}</div></div>`;
   });
   return `<div class="match">
-      <div class="m-top"><span class="m-grp">Grupo ${m.group}</span><span>${m.time} · P${m.n} ${live}</span></div>
+      <div class="m-top"><span class="m-grp">Grupo ${m.group}</span><span>${fmtTime(m.time)} · P${m.n} ${live}</span></div>
       <div class="m-teams"><div class="tm">${m.home}</div>
         <div class="res ${m.result?'':'pending'}">${res}</div>
         <div class="tm away">${m.away}</div></div>
@@ -325,7 +338,7 @@ function renderTabla(){
       cells+=`<td class="sc2 ${lvl}">${pr?pr[0]+'-'+pr[1]:'–'}</td>`;
     });
     body+=`<tr>
-      <td class="mcol"><div class="mc-d">${prettyDay(m.date)} · ${m.time} · ${m.group}</div>
+      <td class="mcol"><div class="mc-d">${prettyDay(m.date)} · ${fmtTime(m.time)} · ${m.group}</div>
         <div class="mc-t">${m.home} <b>${res||'vs'}</b> ${m.away}</div></td>
       ${cells}</tr>`;
   });

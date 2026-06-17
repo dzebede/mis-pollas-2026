@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T12:02:21-05:00",
+  "updated": "2026-06-17T12:08:34-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -19,9 +19,9 @@
       "ok": true
     },
     "polla26": {
-      "myPoints": 16,
-      "myRank": 44,
-      "leaderPoints": 22,
+      "myPoints": 17,
+      "myRank": 43,
+      "leaderPoints": 23,
       "leaderName": "HAM",
       "participants": 478,
       "ok": true
@@ -43,9 +43,9 @@
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 23,
-      "myRank": 23,
-      "leaderPoints": 35,
+      "myPoints": 25,
+      "myRank": 22,
+      "leaderPoints": 37,
       "leaderName": "Fritoconqueso",
       "participants": 39,
       "ok": true

@@ -1,31 +1,27 @@
 name: Live updater (loop en vivo)
 
-# GitHub NO respeta los crons frecuentes (*/5 se descarta casi siempre). En vez de
-# eso, un solo job se queda corriendo y scrapea cada 5 min DE VERDAD (el sleep del
-# runner sí es confiable). Marcadores cada 5 min; standings completo cada ~30 min.
-# Se arranca con horarios de baja frecuencia (más fiables) + disparo manual, y se
-# apaga solo fuera de la ventana de partidos (07-18 UTC).
+# GitHub NO dispara los crons de forma fiable (ni frecuentes ni de baja frecuencia).
+# Por eso este loop se RE-ENCADENA solo: al terminar cada ciclo dispara el siguiente
+# vía la API (secret GH_PAT), sin depender del reloj de GitHub. Es el único updater
+# automático (los workflows refresh/refresh-fast quedan solo manuales) -> sin choques
+# de push. Marcadores cada 5 min; standings completo cada ~30 min. Activo 17-07 UTC.
 
 on:
   workflow_dispatch: {}
   schedule:
-    # Arranques en la ventana de partidos (UTC). Con timeout largo + estos arranques
-    # encolados, la cobertura es continua aunque GitHub se salte alguno.
-    - cron: "2 17,20,23,2 * * *"
+    - cron: "2 17 * * *"   # arranque diario de respaldo, por si la cadena se rompiera
 
 permissions:
   contents: write
 
 concurrency:
-  # Grupo propio (no el de los otros workflows) para no bloquearlos; los choques de
-  # push se resuelven con git pull --rebase + reintento en la siguiente vuelta.
   group: pollas-live
   cancel-in-progress: false
 
 jobs:
   loop:
     runs-on: ubuntu-latest
-    timeout-minutes: 330   # ~5.5 h por arranque
+    timeout-minutes: 280   # ~4.6 h; el loop sale limpio antes (no se "cancela" por timeout)
     steps:
       - uses: actions/checkout@v4
 
@@ -39,7 +35,7 @@ jobs:
           pip install playwright
           python -m playwright install --with-deps chromium
 
-      - name: Loop de refresco (cada 5 min)
+      - name: Loop de refresco (cada 5 min, ~4 h por ciclo)
         env:
           P26_EMAIL: ${{ secrets.P26_EMAIL }}
           P26_PASS: ${{ secrets.P26_PASS }}
@@ -52,11 +48,11 @@ jobs:
         run: |
           git config user.name "pollas-bot"
           git config user.email "bot@users.noreply.github.com"
-          for i in $(seq 1 64); do
+          for i in $(seq 1 50); do
             hour=$((10#$(date -u +%H)))   # 10# evita el bug de octal con 08/09
-            # fuera de ventana de partidos (08-16 UTC = madrugada/mañana Panamá) -> terminar
+            # fuera de ventana de partidos (08-16 UTC = madrugada/mañana Panamá) -> salir
             if [ "$hour" -ge 8 ] && [ "$hour" -le 16 ]; then
-              echo "Fuera de ventana ($hour UTC). Fin del loop."
+              echo "Fuera de ventana ($hour UTC). Fin del ciclo."
               break
             fi
             # cada 6ta vuelta (~30 min) scrape completo (standings); el resto, sólo marcadores
@@ -70,11 +66,33 @@ jobs:
             git add data/standings.json data/matches.json
             if ! git diff --staged --quiet; then
               git commit -m "live refresh $(date -u +%FT%TZ)"
-              git pull --rebase origin main || true
-              git push || true
+              # push resiliente (reintenta ante cualquier choque; no aborta el loop)
+              for k in 1 2 3 4 5; do
+                git pull --rebase origin main || true
+                git push && break || { echo "push falló (intento $k), reintento…"; sleep 3; }
+              done
             else
               echo "sin cambios"
             fi
-            # no dormir en la última vuelta
-            if [ "$i" -lt 64 ]; then sleep 300; fi
+            if [ "$i" -lt 50 ]; then sleep 300; fi
           done
+
+      - name: Re-encadenar el siguiente ciclo (si seguimos en ventana)
+        if: always()
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          hour=$((10#$(date -u +%H)))
+          if [ -z "$GH_PAT" ]; then
+            echo "Sin secret GH_PAT: no me re-encadeno. Configúralo para 24/7 sin huecos."
+            exit 0
+          fi
+          if [ "$hour" -ge 8 ] && [ "$hour" -le 16 ]; then
+            echo "Fuera de ventana ($hour UTC): no re-encadeno; el cron de las 17:02 rearranca."
+            exit 0
+          fi
+          code=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            -H "Authorization: Bearer $GH_PAT" -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/live.yml/dispatches" \
+            -d '{"ref":"main"}')
+          echo "Re-encadenar siguiente ciclo -> HTTP $code"

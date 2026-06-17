@@ -4,9 +4,8 @@ name: Refrescar marcadores (rápido)
 # Corre en segundos, así que puede ir cada 5 min y el marcador aparece casi en vivo.
 
 on:
-  schedule:
-    # Ventana de partidos ~19:00-07:00 UTC (14:00-02:00 Panamá). Cada 5 min.
-    - cron: "*/5 19-23,0-6 * * *"
+  # Schedule DESHABILITADO: el loop "live" (live.yml) es ahora el único updater
+  # automático, para que no haya choques de push. Este queda solo para disparo manual.
   workflow_dispatch: {}   # botón "Run workflow" manual
 
 permissions:

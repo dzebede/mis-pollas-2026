@@ -64,7 +64,8 @@ def scrape_kicktipp():
         raise RuntimeError("kicktipp: no se encontró Belfort en el top mostrado")
     return {"kicktipp": {"myPoints": me["pts"], "myRank": me["pos"],
                           "leaderPoints": leader["pts"], "leaderName": leader["name"],
-                          "participants": None, "ok": True}}
+                          # Kicktipp no expone el total; valor manual (ajustar si cambia)
+                          "participants": 39, "ok": True}}
 
 # ----------------------------------------------------------------------------
 # 1b) RESULTADOS REALES (Kicktipp tippuebersicht, público) -> data/matches.json

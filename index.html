@@ -54,6 +54,7 @@
   .pm-pts{font-size:23px;font-weight:800;color:var(--accent);line-height:1}
   .pm-pts span{font-size:9px;color:var(--mut);font-weight:600;margin-left:1px}
   .pm-r{font-size:12.5px;font-weight:700;margin-top:3px}
+  .pm-tot{font-size:9px;color:var(--mut);font-weight:600}
   .pm-l{font-size:9px;color:var(--mut);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .daysgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px;align-items:start}
   .dayblock{min-width:0}
@@ -270,11 +271,12 @@ function posCard(p){
   const lead = s.leaderPoints==null?'—':s.leaderPoints;
   const gap = (s.myPoints!=null&&s.leaderPoints!=null)?(s.leaderPoints-s.myPoints):null;
   const rank = s.myRank?('#'+s.myRank):'—';
+  const tot = s.participants!=null ? `<span class="pm-tot"> de ${s.participants}</span>` : '';
   const gtxt = gap==null?'' : (gap===0?' 🥇' : ' · -'+gap);
   return `<a class="pmini" style="--c:${p.color}" href="${p.url}" target="_blank" title="${p.name} · ${p.account}">
       <div class="pm-h"><span class="pm-fl">${p.flag}</span><span class="pm-nm">${p.col}</span></div>
       <div class="pm-pts">${me}<span>pts</span></div>
-      <div class="pm-r">${rank}</div>
+      <div class="pm-r">${rank}${tot}</div>
       <div class="pm-l">líder ${lead}${gtxt}</div>
     </a>`;
 }

@@ -100,11 +100,13 @@
   .est{color:var(--blue);white-space:nowrap}
   .m-grp{background:var(--bg2);padding:2px 8px;border-radius:20px;font-weight:700}
   .m-live{color:var(--red);font-weight:800}
+  .m-fin{color:var(--green);font-weight:800}
   .m-teams{display:flex;align-items:center;gap:8px;margin-bottom:8px}
   .m-teams .tm{flex:1;font-weight:700;font-size:15px}
   .m-teams .tm.away{text-align:right}
   .m-teams .res{background:var(--bg2);border-radius:10px;padding:5px 11px;font-weight:800;font-size:17px;min-width:60px;text-align:center}
   .m-teams .res.pending{color:var(--mut);font-weight:600}
+  .m-teams .res.reslive{color:var(--red);box-shadow:inset 0 0 0 1.5px var(--red)}
   .preds{display:grid;grid-template-columns:1fr 1fr;gap:5px}
   .pred{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border-radius:9px;padding:5px 7px;
     border-left:3px solid var(--c)}
@@ -215,6 +217,17 @@ function fmtTime(t){
   return to12(t)+' <span class="est">'+to12(est)+' EST</span>';
 }
 
+// Un partido sólo CUENTA puntos cuando es final. Con marcador, cuenta si el scraper
+// lo marcó final (m.final) o si ya pasó la duración típica desde el inicio
+// (kickoff + 135 min). Mientras juega se ve el marcador en vivo pero NO suma puntos.
+const FINAL_MIN = 135;
+function isFinal(m){
+  if(!m.result) return false;
+  if(m.final===true) return true;
+  if(m.kickoff && Date.now() >= new Date(m.kickoff).getTime() + FINAL_MIN*60000) return true;
+  return false;
+}
+
 async function load(){
   [CONFIG,MATCHES,STAND] = await Promise.all([
     fetch('data/config.json?v='+Date.now()).then(r=>r.json()),
@@ -267,23 +280,27 @@ function posCard(p){
 }
 
 function buildMatch(m){
+  const fin = isFinal(m);
   const res = m.result ? `${m.result[0]} - ${m.result[1]}` : '— : —';
-  const live = m.result?'<span class="m-live">● FINAL/EN VIVO</span>':'';
+  const live = m.result ? (fin
+      ? '<span class="m-fin">✓ FINAL</span>'
+      : '<span class="m-live">● EN VIVO · no cuenta aún</span>') : '';
   let preds='';
   CONFIG.pollas.forEach(p=>{
     const pr=m.predictions[p.id];
     const txt = pr?`${pr[0]} - ${pr[1]}`:'—';
     const r = scorePred(p.id,pr,m.result);
-    const lvl = r? r.lvl : '';
-    const badge = (r&&m.result)?`<span class="pts-badge">+${r.pts}</span>`:'';
+    const lvl = (fin && r) ? r.lvl : '';                        // color sólo si es final
+    const badge = (fin && r)?`<span class="pts-badge">+${r.pts}</span>`:'';
     preds+=`<div class="pred" style="--c:${p.color}">
         <div class="pl"><b>${p.flag} ${p.col}</b><small>${p.name}</small></div>
-        <div class="sc ${m.result?lvl:''}">${txt}${badge}</div></div>`;
+        <div class="sc ${lvl}">${txt}${badge}</div></div>`;
   });
+  const resCls = m.result ? (fin?'':'reslive') : 'pending';
   return `<div class="match">
       <div class="m-top"><span class="m-grp">Grupo ${m.group}</span><span>${fmtTime(m.time)} · P${m.n} ${live}</span></div>
       <div class="m-teams"><div class="tm">${m.home}</div>
-        <div class="res ${m.result?'':'pending'}">${res}</div>
+        <div class="res ${resCls}">${res}</div>
         <div class="tm away">${m.away}</div></div>
       <div class="preds">${preds}</div>
     </div>`;
@@ -293,7 +310,7 @@ function dayBlock(ds){
   const dm=MATCHES.matches.filter(m=>m.date===ds);
   let dayPts={}, anyRes=false;
   CONFIG.pollas.forEach(p=>dayPts[p.id]=0);
-  dm.forEach(m=>{ if(m.result){anyRes=true; CONFIG.pollas.forEach(p=>{
+  dm.forEach(m=>{ if(isFinal(m)){anyRes=true; CONFIG.pollas.forEach(p=>{
     const r=scorePred(p.id,m.predictions[p.id],m.result); if(r)dayPts[p.id]+=r.pts; });}});
   const badge = ds===TODAY?'HOY':ds===TOMORROW?'MAÑANA':'';
   const head=`<div class="dayhdr"><b>${badge?`<span class="dbadge">${badge}</span> `:''}${prettyDay(ds)}</b>
@@ -334,7 +351,7 @@ function renderTabla(){
     P.forEach(p=>{
       const pr=m.predictions[p.id];
       const r=scorePred(p.id,pr,m.result);
-      const lvl=(m.result&&r)?r.lvl:'';
+      const lvl=(isFinal(m)&&r)?r.lvl:'';
       cells+=`<td class="sc2 ${lvl}">${pr?pr[0]+'-'+pr[1]:'–'}</td>`;
     });
     body+=`<tr>

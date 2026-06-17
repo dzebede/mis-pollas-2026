@@ -40,22 +40,25 @@
   .posgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
   /* siempre 6 en una fila; se compactan para caber en una pantalla de teléfono */
   @media(max-width:600px){ .posgrid{gap:3px}
-    .pmini{padding:7px 2px 6px;border-radius:9px;border-top-width:2px}
-    .pm-fl{font-size:15px} .pm-nm{font-size:8px} .pm-pts{font-size:16px}
-    .pm-pts span{font-size:7px} .pm-r{font-size:10.5px} .pm-l{font-size:7.5px} }
+    .pmini{padding:8px 2px 7px;border-radius:9px;border-top-width:2px}
+    .pm-fl{font-size:15px} .pm-nm{font-size:8px} .pm-pts{font-size:18px}
+    .pm-pts span{font-size:7px} .pm-rank{font-size:11px} .pm-gap{font-size:8.5px}
+    .pm-meta{margin-top:5px;padding-top:4px} }
   @media(max-width:380px){ .posgrid{gap:2px}
-    .pm-fl{font-size:13px} .pm-nm{font-size:7px} .pm-pts{font-size:14px}
-    .pm-r{font-size:9.5px} .pm-l{font-size:6.5px} }
+    .pm-fl{font-size:13px} .pm-nm{font-size:7px} .pm-pts{font-size:15px}
+    .pm-rank{font-size:10px} .pm-gap{font-size:7.5px} }
   .pmini{display:block;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);
-    border-radius:12px;padding:9px 4px 8px;text-align:center;text-decoration:none;color:var(--txt);min-width:0}
-  .pm-h{display:flex;flex-direction:column;align-items:center;gap:1px;margin-bottom:4px}
-  .pm-fl{font-size:18px;line-height:1}
+    border-radius:12px;padding:10px 4px 9px;text-align:center;text-decoration:none;color:var(--txt);min-width:0}
+  .pm-h{display:flex;flex-direction:column;align-items:center;gap:1px;margin-bottom:6px}
+  .pm-fl{font-size:19px;line-height:1}
   .pm-nm{font-size:10px;font-weight:700;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-  .pm-pts{font-size:23px;font-weight:800;color:var(--accent);line-height:1}
+  .pm-pts{font-size:24px;font-weight:800;color:var(--accent);line-height:1}
   .pm-pts span{font-size:9px;color:var(--mut);font-weight:600;margin-left:1px}
-  .pm-r{font-size:12.5px;font-weight:700;margin-top:3px}
+  .pm-meta{margin-top:7px;padding-top:6px;border-top:1px solid var(--line)}
+  .pm-rank{font-size:13px;font-weight:800;line-height:1.15}
   .pm-tot{font-size:9px;color:var(--mut);font-weight:600}
-  .pm-l{font-size:9px;color:var(--mut);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pm-gap{font-size:9.5px;font-weight:700;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pm-beh{color:var(--red)} .pm-gold{color:var(--accent)} .pm-mut{color:var(--mut);font-weight:600}
   .daysgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px;align-items:start}
   .dayblock{min-width:0}
   .dayhdr{display:flex;justify-content:space-between;align-items:baseline;gap:8px;
@@ -268,16 +271,20 @@ function setView(v){
 function posCard(p){
   const s=STAND.pollas[p.id]||{};
   const me = s.myPoints==null?'—':s.myPoints;
-  const lead = s.leaderPoints==null?'—':s.leaderPoints;
-  const gap = (s.myPoints!=null&&s.leaderPoints!=null)?(s.leaderPoints-s.myPoints):null;
   const rank = s.myRank?('#'+s.myRank):'—';
-  const tot = s.participants!=null ? `<span class="pm-tot"> de ${s.participants}</span>` : '';
-  const gtxt = gap==null?'' : (gap===0?' 🥇' : ' · -'+gap);
+  const tot = s.participants!=null ? `<span class="pm-tot">/${s.participants}</span>` : '';
+  const gap = (s.myPoints!=null&&s.leaderPoints!=null)?(s.leaderPoints-s.myPoints):null;
+  let gline;
+  if(gap==null)      gline = '<span class="pm-mut">—</span>';
+  else if(gap<=0)    gline = '<span class="pm-gold">🥇 puntero</span>';
+  else               gline = `<span class="pm-beh">−${gap}</span> <span class="pm-mut">👑${s.leaderPoints}</span>`;
   return `<a class="pmini" style="--c:${p.color}" href="${p.url}" target="_blank" title="${p.name} · ${p.account}">
       <div class="pm-h"><span class="pm-fl">${p.flag}</span><span class="pm-nm">${p.col}</span></div>
       <div class="pm-pts">${me}<span>pts</span></div>
-      <div class="pm-r">${rank}${tot}</div>
-      <div class="pm-l">líder ${lead}${gtxt}</div>
+      <div class="pm-meta">
+        <div class="pm-rank">${rank}${tot}</div>
+        <div class="pm-gap">${gline}</div>
+      </div>
     </a>`;
 }
 

@@ -40,6 +40,9 @@ jobs:
             echo "Sin cambios."
           else
             git commit -m "refresh marcadores $(date -u +%FT%TZ)"
-            git pull --rebase origin main || true
-            git push
+            # push resiliente: reintenta ante choques con otros workflows (no falla el job)
+            for k in 1 2 3 4 5; do
+              git pull --rebase origin main || true
+              git push && break || { echo "push falló (intento $k), reintento…"; sleep 3; }
+            done
           fi

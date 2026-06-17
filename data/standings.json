@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T15:39:16-05:00",
+  "updated": "2026-06-17T15:44:40-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -43,10 +43,10 @@
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 23,
-      "myRank": 23,
+      "myPoints": 26,
+      "myRank": 18,
       "leaderPoints": 37,
-      "leaderName": "Fritoconqueso",
+      "leaderName": "DBrock",
       "participants": 39,
       "ok": true
     },

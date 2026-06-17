@@ -1,20 +1,20 @@
 {
-  "updated": "2026-06-16T19:38:12-05:00",
+  "updated": "2026-06-16T20:22:21-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (0 aplicados)",
+    "resultados": "ok (1 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 1,
-      "myRank": 170,
+      "myRank": 184,
       "leaderPoints": 5,
-      "leaderName": "Bela Boys 1",
+      "leaderName": "Alemma",
       "participants": 350,
       "ok": true
     },
@@ -43,9 +43,9 @@
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 18,
+      "myPoints": 20,
       "myRank": 22,
-      "leaderPoints": 30,
+      "leaderPoints": 33,
       "leaderName": "Fritoconqueso",
       "participants": null,
       "ok": true

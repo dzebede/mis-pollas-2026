@@ -1,27 +1,27 @@
 {
-  "updated": "2026-06-18T15:57:39-05:00",
+  "updated": "2026-06-18T16:01:31-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (1 aplicados)",
+    "resultados": "ok (0 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 1,
-      "myRank": 254,
+      "myRank": 255,
       "leaderPoints": 7,
       "leaderName": "mg196",
       "participants": 350,
       "ok": true
     },
     "polla26": {
-      "myPoints": 19,
-      "myRank": 81,
-      "leaderPoints": 28,
+      "myPoints": 20,
+      "myRank": 77,
+      "leaderPoints": 29,
       "leaderName": "HAM",
       "participants": 478,
       "ok": true

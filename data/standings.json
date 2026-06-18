@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-17T22:54:15-05:00",
+  "updated": "2026-06-17T23:04:45-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (0 aplicados)",
+    "resultados": "ok (1 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {
@@ -43,10 +43,10 @@
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 31,
+      "myPoints": 32,
       "myRank": 13,
-      "leaderPoints": 38,
-      "leaderName": "ButragueñoMX86",
+      "leaderPoints": 40,
+      "leaderName": "Jota4",
       "participants": 39,
       "ok": true
     },

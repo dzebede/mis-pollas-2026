@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T23:04:45-05:00",
+  "updated": "2026-06-17T23:26:44-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -12,31 +12,31 @@
   "pollas": {
     "pollapato": {
       "myPoints": 1,
-      "myRank": 241,
+      "myRank": 239,
       "leaderPoints": 7,
       "leaderName": "mg196",
       "participants": 350,
       "ok": true
     },
     "polla26": {
-      "myPoints": 18,
-      "myRank": 52,
-      "leaderPoints": 27,
+      "myPoints": 19,
+      "myRank": 63,
+      "leaderPoints": 28,
       "leaderName": "HAM",
       "participants": 478,
       "ok": true
     },
     "triplea": {
-      "myPoints": 16,
-      "myRank": 400,
+      "myPoints": 17,
+      "myRank": 419,
       "leaderPoints": 28,
       "leaderName": "david (9)",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
-      "myPoints": 19,
-      "myRank": 113,
+      "myPoints": 20,
+      "myRank": 127,
       "leaderPoints": 28,
       "leaderName": "david (9)",
       "participants": 1666,
@@ -51,8 +51,8 @@
       "ok": true
     },
     "triplea3": {
-      "myPoints": 15,
-      "myRank": 575,
+      "myPoints": 16,
+      "myRank": 598,
       "leaderPoints": 28,
       "leaderName": "david (9)",
       "participants": 1666,

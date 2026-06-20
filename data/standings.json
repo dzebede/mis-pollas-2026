@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T13:10:00-05:00",
+  "updated": "2026-06-20T13:16:13-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -12,9 +12,9 @@
   "pollas": {
     "pollapato": {
       "myPoints": 3,
-      "myRank": 180,
+      "myRank": 157,
       "leaderPoints": 8,
-      "leaderName": "Alemma",
+      "leaderName": "mg196",
       "participants": 350,
       "ok": true
     },

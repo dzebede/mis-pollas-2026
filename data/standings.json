@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-20T12:11:16-05:00",
+  "updated": "2026-06-20T12:21:47-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (0 aplicados)",
+    "resultados": "ok (1 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {
@@ -43,9 +43,9 @@
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 52,
-      "myRank": 4,
-      "leaderPoints": 61,
+      "myPoints": 51,
+      "myRank": 5,
+      "leaderPoints": 60,
       "leaderName": "Jota4",
       "participants": 39,
       "ok": true

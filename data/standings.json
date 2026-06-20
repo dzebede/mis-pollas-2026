@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T17:01:50-05:00",
+  "updated": "2026-06-20T17:13:38-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -11,33 +11,33 @@
   },
   "pollas": {
     "pollapato": {
-      "myPoints": 3,
-      "myRank": 161,
+      "myPoints": 4,
+      "myRank": 107,
       "leaderPoints": 8,
-      "leaderName": "mg196",
+      "leaderName": "Bela Boys 1",
       "participants": 350,
       "ok": true
     },
     "polla26": {
-      "myPoints": 27,
-      "myRank": 91,
-      "leaderPoints": 38,
-      "leaderName": "GIM GVA 01",
+      "myPoints": 28,
+      "myRank": 111,
+      "leaderPoints": 40,
+      "leaderName": "HAM",
       "participants": 478,
       "ok": true
     },
     "triplea": {
-      "myPoints": 28,
-      "myRank": 183,
-      "leaderPoints": 39,
+      "myPoints": 29,
+      "myRank": 220,
+      "leaderPoints": 42,
       "leaderName": "Joy",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
-      "myPoints": 34,
-      "myRank": 18,
-      "leaderPoints": 39,
+      "myPoints": 35,
+      "myRank": 23,
+      "leaderPoints": 42,
       "leaderName": "Joy",
       "participants": 1666,
       "ok": true
@@ -51,9 +51,9 @@
       "ok": true
     },
     "triplea3": {
-      "myPoints": 23,
-      "myRank": 769,
-      "leaderPoints": 39,
+      "myPoints": 24,
+      "myRank": 829,
+      "leaderPoints": 42,
       "leaderName": "Joy",
       "participants": 1666,
       "ok": true

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T00:09:13-05:00",
+  "updated": "2026-06-20T00:41:39-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -27,18 +27,18 @@
       "ok": true
     },
     "triplea": {
-      "myPoints": 24,
-      "myRank": 463,
+      "myPoints": 27,
+      "myRank": 201,
       "leaderPoints": 38,
-      "leaderName": "Joy",
+      "leaderName": "marcos (3)",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
       "myPoints": 34,
-      "myRank": 10,
+      "myRank": 13,
       "leaderPoints": 38,
-      "leaderName": "Joy",
+      "leaderName": "marcos (3)",
       "participants": 1666,
       "ok": true
     },
@@ -52,9 +52,9 @@
     },
     "triplea3": {
       "myPoints": 22,
-      "myRank": 750,
+      "myRank": 805,
       "leaderPoints": 38,
-      "leaderName": "Joy",
+      "leaderName": "marcos (3)",
       "participants": 1666,
       "ok": true
     }

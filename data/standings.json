@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T15:32:16-05:00",
+  "updated": "2026-06-21T16:04:39-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -20,7 +20,7 @@
     },
     "polla26": {
       "myPoints": 30,
-      "myRank": 119,
+      "myRank": 120,
       "leaderPoints": 42,
       "leaderName": "HAM",
       "participants": 478,

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T13:22:39-05:00",
+  "updated": "2026-06-21T13:55:02-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -28,7 +28,7 @@
     },
     "triplea": {
       "myPoints": 31,
-      "myRank": 219,
+      "myRank": 228,
       "leaderPoints": 44,
       "leaderName": "Joy",
       "participants": 1666,
@@ -52,7 +52,7 @@
     },
     "triplea3": {
       "myPoints": 26,
-      "myRank": 816,
+      "myRank": 829,
       "leaderPoints": 44,
       "leaderName": "Joy",
       "participants": 1666,

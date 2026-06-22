@@ -1,18 +1,18 @@
 {
-  "updated": "2026-06-22T12:11:21-05:00",
+  "updated": "2026-06-22T12:44:38-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (0 aplicados)",
+    "resultados": "ok (1 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 4,
-      "myRank": 111,
+      "myRank": 127,
       "leaderPoints": 8,
       "leaderName": "Bela Boys 1",
       "participants": 350,
@@ -43,9 +43,9 @@
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 59,
-      "myRank": 6,
-      "leaderPoints": 70,
+      "myPoints": 62,
+      "myRank": 5,
+      "leaderPoints": 73,
       "leaderName": "Jota4",
       "participants": 39,
       "ok": true

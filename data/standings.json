@@ -1,60 +1,60 @@
 {
-  "updated": "2026-06-21T17:47:09-05:00",
+  "updated": "2026-06-21T22:25:18-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (1 aplicados)",
+    "resultados": "ok (2 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 4,
-      "myRank": 109,
+      "myRank": 111,
       "leaderPoints": 8,
       "leaderName": "Bela Boys 1",
       "participants": 350,
       "ok": true
     },
     "polla26": {
-      "myPoints": 30,
-      "myRank": 120,
-      "leaderPoints": 42,
+      "myPoints": 31,
+      "myRank": 124,
+      "leaderPoints": 43,
       "leaderName": "HAM",
       "participants": 478,
       "ok": true
     },
     "triplea": {
-      "myPoints": 31,
-      "myRank": 237,
+      "myPoints": 32,
+      "myRank": 224,
       "leaderPoints": 44,
-      "leaderName": "Joy",
+      "leaderName": "学会使用克劳德",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
-      "myPoints": 37,
-      "myRank": 23,
+      "myPoints": 38,
+      "myRank": 19,
       "leaderPoints": 44,
-      "leaderName": "Joy",
+      "leaderName": "学会使用克劳德",
       "participants": 1666,
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 57,
-      "myRank": 5,
-      "leaderPoints": 66,
+      "myPoints": 59,
+      "myRank": 6,
+      "leaderPoints": 70,
       "leaderName": "Jota4",
       "participants": 39,
       "ok": true
     },
     "triplea3": {
       "myPoints": 26,
-      "myRank": 843,
+      "myRank": 957,
       "leaderPoints": 44,
-      "leaderName": "Joy",
+      "leaderName": "学会使用克劳德",
       "participants": 1666,
       "ok": true
     }

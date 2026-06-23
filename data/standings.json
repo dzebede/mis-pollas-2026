@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23T16:57:32-05:00",
+  "updated": "2026-06-23T17:29:58-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -28,7 +28,7 @@
     },
     "triplea": {
       "myPoints": 39,
-      "myRank": 157,
+      "myRank": 161,
       "leaderPoints": 52,
       "leaderName": "学会使用克劳德",
       "participants": 1666,
@@ -36,7 +36,7 @@
     },
     "triplea2": {
       "myPoints": 43,
-      "myRank": 44,
+      "myRank": 45,
       "leaderPoints": 52,
       "leaderName": "学会使用克劳德",
       "participants": 1666,
@@ -52,7 +52,7 @@
     },
     "triplea3": {
       "myPoints": 29,
-      "myRank": 1235,
+      "myRank": 1237,
       "leaderPoints": 52,
       "leaderName": "学会使用克劳德",
       "participants": 1666,

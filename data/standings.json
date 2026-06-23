@@ -1,19 +1,19 @@
 {
-  "updated": "2026-06-23T12:17:51-05:00",
+  "updated": "2026-06-23T12:29:39-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (0 aplicados)",
+    "resultados": "ok (1 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {
     "pollapato": {
-      "myPoints": 5,
-      "myRank": 114,
-      "leaderPoints": 9,
+      "myPoints": 6,
+      "myRank": 82,
+      "leaderPoints": 10,
       "leaderName": "El Suizo",
       "participants": 350,
       "ok": true

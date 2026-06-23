@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-22T20:00:25-05:00",
+  "updated": "2026-06-22T20:07:59-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
-    "pollapato": "ok",
-    "resultados": "ok (0 aplicados)",
+    "pollapato": "FALLO: pollapato: no se parseó ElGanado del dashboard",
+    "resultados": "ok (1 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {

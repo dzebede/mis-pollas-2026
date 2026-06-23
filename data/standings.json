@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23T13:53:15-05:00",
+  "updated": "2026-06-23T14:15:15-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -12,32 +12,32 @@
   "pollas": {
     "pollapato": {
       "myPoints": 5,
-      "myRank": 119,
-      "leaderPoints": 10,
-      "leaderName": "mg196",
+      "myRank": 114,
+      "leaderPoints": 9,
+      "leaderName": "El Suizo",
       "participants": 350,
       "ok": true
     },
     "polla26": {
-      "myPoints": 37,
-      "myRank": 90,
-      "leaderPoints": 49,
+      "myPoints": 38,
+      "myRank": 91,
+      "leaderPoints": 50,
       "leaderName": "HAM",
       "participants": 478,
       "ok": true
     },
     "triplea": {
-      "myPoints": 38,
+      "myPoints": 39,
       "myRank": 157,
-      "leaderPoints": 51,
+      "leaderPoints": 52,
       "leaderName": "学会使用克劳德",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
-      "myPoints": 42,
+      "myPoints": 43,
       "myRank": 44,
-      "leaderPoints": 51,
+      "leaderPoints": 52,
       "leaderName": "学会使用克劳德",
       "participants": 1666,
       "ok": true
@@ -51,9 +51,9 @@
       "ok": true
     },
     "triplea3": {
-      "myPoints": 28,
-      "myRank": 1236,
-      "leaderPoints": 51,
+      "myPoints": 29,
+      "myRank": 1235,
+      "leaderPoints": 52,
       "leaderName": "学会使用克劳德",
       "participants": 1666,
       "ok": true

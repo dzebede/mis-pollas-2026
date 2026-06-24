@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24T17:23:45-05:00",
+  "updated": "2026-06-24T17:30:12-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -11,9 +11,9 @@
   },
   "pollas": {
     "pollapato": {
-      "myPoints": 6,
-      "myRank": 135,
-      "leaderPoints": 11,
+      "myPoints": 8,
+      "myRank": 73,
+      "leaderPoints": 12,
       "leaderName": "Bela Boys 1",
       "participants": 350,
       "ok": true
@@ -43,9 +43,9 @@
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 82,
+      "myPoints": 80,
       "myRank": 11,
-      "leaderPoints": 95,
+      "leaderPoints": 96,
       "leaderName": "Jota4",
       "participants": 39,
       "ok": true

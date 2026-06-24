@@ -1,18 +1,18 @@
 {
-  "updated": "2026-06-24T15:46:20-05:00",
+  "updated": "2026-06-24T15:52:32-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "ok",
     "pollapato": "ok",
-    "resultados": "ok (1 aplicados)",
+    "resultados": "ok (0 aplicados)",
     "triplea3_preds": "ok (0)"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 6,
-      "myRank": 145,
+      "myRank": 135,
       "leaderPoints": 11,
       "leaderName": "Bela Boys 1",
       "participants": 350,

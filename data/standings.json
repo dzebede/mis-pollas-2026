@@ -1,20 +1,20 @@
 {
-  "updated": "2026-06-25T16:39:14-05:00",
+  "updated": "2026-06-25T16:50:56-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
-    "triplea": "ok",
+    "triplea": "FALLO: triplea: no se capturaron cabeceras de sesión",
     "pollapato": "ok",
     "resultados": "ok (0 aplicados)",
-    "triplea3_preds": "ok (0)"
+    "triplea3_preds": "FALLO: triplea3: no se capturaron cabeceras de sesión"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 8,
-      "myRank": 108,
-      "leaderPoints": 12,
-      "leaderName": "Bela Boys 1",
+      "myRank": 112,
+      "leaderPoints": 13,
+      "leaderName": "Manila",
       "participants": 350,
       "ok": true
     },

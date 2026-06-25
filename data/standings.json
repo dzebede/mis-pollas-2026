@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-25T18:09:46-05:00",
+  "updated": "2026-06-25T18:37:29-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -12,8 +12,8 @@
   "pollas": {
     "pollapato": {
       "myPoints": 9,
-      "myRank": 96,
-      "leaderPoints": 14,
+      "myRank": 125,
+      "leaderPoints": 15,
       "leaderName": "Manila",
       "participants": 350,
       "ok": true

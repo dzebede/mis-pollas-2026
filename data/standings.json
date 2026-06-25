@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24T22:00:52-05:00",
+  "updated": "2026-06-24T22:34:11-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -27,17 +27,17 @@
       "ok": true
     },
     "triplea": {
-      "myPoints": 44,
-      "myRank": 230,
-      "leaderPoints": 61,
+      "myPoints": 45,
+      "myRank": 224,
+      "leaderPoints": 62,
       "leaderName": "学会使用克劳德",
       "participants": 1666,
       "ok": true
     },
     "triplea2": {
-      "myPoints": 47,
-      "myRank": 100,
-      "leaderPoints": 61,
+      "myPoints": 48,
+      "myRank": 94,
+      "leaderPoints": 62,
       "leaderName": "学会使用克劳德",
       "participants": 1666,
       "ok": true
@@ -51,9 +51,9 @@
       "ok": true
     },
     "triplea3": {
-      "myPoints": 38,
-      "myRank": 810,
-      "leaderPoints": 61,
+      "myPoints": 40,
+      "myRank": 689,
+      "leaderPoints": 62,
       "leaderName": "学会使用克劳德",
       "participants": 1666,
       "ok": true

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26T14:22:00-05:00",
+  "updated": "2026-06-26T14:28:20-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -11,10 +11,10 @@
   },
   "pollas": {
     "pollapato": {
-      "myPoints": 9,
-      "myRank": 123,
-      "leaderPoints": 14,
-      "leaderName": "El Suizo",
+      "myPoints": 11,
+      "myRank": 95,
+      "leaderPoints": 16,
+      "leaderName": "Marval",
       "participants": 350,
       "ok": true
     },
@@ -43,10 +43,10 @@
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 100,
-      "myRank": 9,
-      "leaderPoints": 109,
-      "leaderName": "DBrock",
+      "myPoints": 102,
+      "myRank": 7,
+      "leaderPoints": 110,
+      "leaderName": "Jota4",
       "participants": 39,
       "ok": true
     },

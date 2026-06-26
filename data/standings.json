@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-25T22:02:55-05:00",
+  "updated": "2026-06-25T22:13:31-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "FALLO: triplea: no se capturaron cabeceras de sesión",
     "pollapato": "ok",
-    "resultados": "ok (0 aplicados)",
+    "resultados": "ok (1 aplicados)",
     "triplea3_preds": "FALLO: triplea3: no se capturaron cabeceras de sesión"
   },
   "pollas": {
@@ -44,7 +44,7 @@
     },
     "kicktipp": {
       "myPoints": 96,
-      "myRank": 9,
+      "myRank": 8,
       "leaderPoints": 106,
       "leaderName": "Jota4",
       "participants": 39,

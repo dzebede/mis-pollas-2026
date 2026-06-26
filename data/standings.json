@@ -1,18 +1,18 @@
 {
-  "updated": "2026-06-25T23:02:06-05:00",
+  "updated": "2026-06-25T23:08:21-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "FALLO: triplea: no se capturaron cabeceras de sesión",
     "pollapato": "ok",
-    "resultados": "ok (1 aplicados)",
+    "resultados": "ok (0 aplicados)",
     "triplea3_preds": "FALLO: triplea3: no se capturaron cabeceras de sesión"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 9,
-      "myRank": 126,
+      "myRank": 123,
       "leaderPoints": 14,
       "leaderName": "El Suizo",
       "participants": 350,
@@ -20,7 +20,7 @@
     },
     "polla26": {
       "myPoints": 47,
-      "myRank": 148,
+      "myRank": 170,
       "leaderPoints": 61,
       "leaderName": "HAM",
       "participants": 478,

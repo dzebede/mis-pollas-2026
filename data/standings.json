@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26T14:05:53-05:00",
+  "updated": "2026-06-26T14:11:16-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -43,9 +43,9 @@
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 96,
-      "myRank": 9,
-      "leaderPoints": 106,
+      "myPoints": 101,
+      "myRank": 7,
+      "leaderPoints": 109,
       "leaderName": "Jota4",
       "participants": 39,
       "ok": true

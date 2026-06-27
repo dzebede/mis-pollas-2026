@@ -1,27 +1,27 @@
 {
-  "updated": "2026-06-26T23:50:42-05:00",
+  "updated": "2026-06-27T00:02:10-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "FALLO: triplea: no se capturaron cabeceras de sesión",
     "pollapato": "ok",
-    "resultados": "ok (0 aplicados)",
+    "resultados": "ok (1 aplicados)",
     "triplea3_preds": "FALLO: triplea3: no se capturaron cabeceras de sesión"
   },
   "pollas": {
     "pollapato": {
       "myPoints": 11,
-      "myRank": 103,
+      "myRank": 124,
       "leaderPoints": 18,
       "leaderName": "Marval",
       "participants": 350,
       "ok": true
     },
     "polla26": {
-      "myPoints": 50,
+      "myPoints": 51,
       "myRank": 186,
-      "leaderPoints": 67,
+      "leaderPoints": 68,
       "leaderName": "Ronaldinho Gaúcho",
       "participants": 478,
       "ok": true
@@ -45,7 +45,7 @@
     "kicktipp": {
       "myPoints": 108,
       "myRank": 6,
-      "leaderPoints": 113,
+      "leaderPoints": 114,
       "leaderName": "Moise_Ze",
       "participants": 39,
       "ok": true

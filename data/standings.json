@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26T20:47:31-05:00",
+  "updated": "2026-06-26T21:19:56-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -19,10 +19,10 @@
       "ok": true
     },
     "polla26": {
-      "myPoints": 49,
-      "myRank": 165,
-      "leaderPoints": 63,
-      "leaderName": "HAM",
+      "myPoints": 50,
+      "myRank": 186,
+      "leaderPoints": 67,
+      "leaderName": "Ronaldinho Gaúcho",
       "participants": 478,
       "ok": true
     },

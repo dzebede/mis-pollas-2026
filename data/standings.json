@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-27T17:39:11-05:00",
+  "updated": "2026-06-27T17:44:33-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -43,9 +43,9 @@
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 115,
-      "myRank": 4,
-      "leaderPoints": 120,
+      "myPoints": 112,
+      "myRank": 5,
+      "leaderPoints": 117,
       "leaderName": "Moise_Ze",
       "participants": 39,
       "ok": true

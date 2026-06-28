@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-27T23:00:33-05:00",
+  "updated": "2026-06-27T23:06:54-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "FALLO: triplea: no se capturaron cabeceras de sesión",
     "pollapato": "ok",
-    "resultados": "ok (1 aplicados)",
+    "resultados": "ok (0 aplicados)",
     "triplea3_preds": "FALLO: triplea3: no se capturaron cabeceras de sesión"
   },
   "pollas": {
@@ -19,9 +19,9 @@
       "ok": true
     },
     "polla26": {
-      "myPoints": 59,
-      "myRank": 95,
-      "leaderPoints": 73,
+      "myPoints": 61,
+      "myRank": 86,
+      "leaderPoints": 75,
       "leaderName": "Niso Claude",
       "participants": 478,
       "ok": true

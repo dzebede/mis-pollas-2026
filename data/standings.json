@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-27T22:00:20-05:00",
+  "updated": "2026-06-27T22:21:52-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "FALLO: triplea: no se capturaron cabeceras de sesión",
     "pollapato": "ok",
-    "resultados": "ok (0 aplicados)",
+    "resultados": "ok (2 aplicados)",
     "triplea3_preds": "FALLO: triplea3: no se capturaron cabeceras de sesión"
   },
   "pollas": {
@@ -43,10 +43,10 @@
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 126,
-      "myRank": 1,
-      "leaderPoints": 126,
-      "leaderName": "Belfort",
+      "myPoints": 120,
+      "myRank": 6,
+      "leaderPoints": 129,
+      "leaderName": "Moise_Ze",
       "participants": 39,
       "ok": true
     },

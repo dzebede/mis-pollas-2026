@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-27T20:29:52-05:00",
+  "updated": "2026-06-27T20:46:52-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -11,18 +11,18 @@
   },
   "pollas": {
     "pollapato": {
-      "myPoints": 15,
-      "myRank": 47,
+      "myPoints": 14,
+      "myRank": 67,
       "leaderPoints": 21,
       "leaderName": "Marval",
       "participants": 350,
       "ok": true
     },
     "polla26": {
-      "myPoints": 58,
-      "myRank": 98,
-      "leaderPoints": 72,
-      "leaderName": "Ronaldinho Gaúcho",
+      "myPoints": 59,
+      "myRank": 95,
+      "leaderPoints": 73,
+      "leaderName": "Niso Claude",
       "participants": 478,
       "ok": true
     },

@@ -1,19 +1,19 @@
 {
-  "updated": "2026-06-27T21:46:45-05:00",
+  "updated": "2026-06-27T21:53:04-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "FALLO: triplea: no se capturaron cabeceras de sesión",
     "pollapato": "ok",
-    "resultados": "ok (1 aplicados)",
+    "resultados": "ok (0 aplicados)",
     "triplea3_preds": "FALLO: triplea3: no se capturaron cabeceras de sesión"
   },
   "pollas": {
     "pollapato": {
-      "myPoints": 15,
-      "myRank": 62,
-      "leaderPoints": 21,
+      "myPoints": 16,
+      "myRank": 50,
+      "leaderPoints": 22,
       "leaderName": "Marval",
       "participants": 350,
       "ok": true

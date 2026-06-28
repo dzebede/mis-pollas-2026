@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-27T20:24:30-05:00",
+  "updated": "2026-06-27T20:29:52-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "FALLO: triplea: no se capturaron cabeceras de sesión",
     "pollapato": "ok",
-    "resultados": "ok (1 aplicados)",
+    "resultados": "ok (0 aplicados)",
     "triplea3_preds": "FALLO: triplea3: no se capturaron cabeceras de sesión"
   },
   "pollas": {
@@ -44,8 +44,8 @@
     },
     "kicktipp": {
       "myPoints": 118,
-      "myRank": 6,
-      "leaderPoints": 125,
+      "myRank": 4,
+      "leaderPoints": 123,
       "leaderName": "Moise_Ze",
       "participants": 39,
       "ok": true

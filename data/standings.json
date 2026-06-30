@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30T12:14:28-05:00",
+  "updated": "2026-06-30T12:40:42-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
@@ -43,9 +43,9 @@
       "ok": true
     },
     "kicktipp": {
-      "myPoints": 135,
+      "myPoints": 138,
       "myRank": 1,
-      "leaderPoints": 135,
+      "leaderPoints": 138,
       "leaderName": "Belfort",
       "participants": 39,
       "ok": true

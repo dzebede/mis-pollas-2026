@@ -1,11 +1,11 @@
 {
-  "updated": "2026-07-01T16:32:28-05:00",
+  "updated": "2026-07-01T17:05:49-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "FALLO: triplea: no se capturaron cabeceras de sesión",
-    "pollapato": "ok",
+    "pollapato": "FALLO: pollapato: no se parseó ElGanado del dashboard",
     "resultados": "ok (0 aplicados)",
     "triplea3_preds": "FALLO: triplea3: no se capturaron cabeceras de sesión"
   },

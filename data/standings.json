@@ -1,11 +1,11 @@
 {
-  "updated": "2026-07-02T12:41:08-05:00",
+  "updated": "2026-07-02T13:14:19-05:00",
   "source": "scraper",
   "status": {
     "kicktipp": "ok",
     "polla26": "ok",
     "triplea": "FALLO: triplea: no se capturaron cabeceras de sesión",
-    "pollapato": "FALLO: pollapato: no se parseó ElGanado del dashboard",
+    "pollapato": "FALLO: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://pollapato.com/login\", waiting until \"domcontentloaded\"\n",
     "resultados": "ok (0 aplicados)",
     "triplea3_preds": "FALLO: triplea3: no se capturaron cabeceras de sesión"
   },
